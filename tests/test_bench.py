@@ -70,7 +70,9 @@ def test_all_table_holes_are_open_and_grid_matches(model):
             distance = mujoco.mj_ray(model, data, point+[0,0,0.0001], np.array([0.,0.,-1.]), group, 1, -1, gid)
             assert distance < 0 or distance > 0.036, (ix,iy,distance)
     np.testing.assert_allclose(grid_hole_position(13,9), [0.625,-0.425,0])
-    point = grid_hole_position(13,9) + [0.015,0,0.01]
+    # Sample inside a prism face: a ray exactly on the radial mesh seam
+    # can miss both adjacent triangles in newer MuJoCo ray implementations.
+    point = grid_hole_position(13,9) + [0.015,0.004,0.01]
     distance = mujoco.mj_ray(model,data,point,np.array([0.,0.,-1.]),group,1,-1,gid)
     assert abs(distance-0.01) < 1e-7
 

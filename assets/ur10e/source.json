@@ -1,0 +1,143 @@
+{
+  "name": "Universal Robots UR10e",
+  "upstream": "https://github.com/google-deepmind/mujoco_menagerie/tree/main/universal_robots_ur10e",
+  "snapshot": "Local MuJoCo Menagerie archive; upstream commit not recorded",
+  "license": "BSD-3-Clause",
+  "files": [
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/LICENSE",
+      "path": "assets/ur10e/source/LICENSE",
+      "sha256": "5ec71ccf66c8d03261448f2441a586765b97f2248c860a1ae19689fb1c45cee6"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/README.md",
+      "path": "assets/ur10e/source/README.md",
+      "sha256": "146aed026017ef529d862ce64aa42e9ba452d0d942b168fa9fb4baefe49ae66e"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/base_0.obj",
+      "path": "assets/ur10e/source/assets/base_0.obj",
+      "sha256": "bf32c8c773792ef5d77733faca78f76aac09253d1f27e5d6550d016de7c71805"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/base_1.obj",
+      "path": "assets/ur10e/source/assets/base_1.obj",
+      "sha256": "849a788074d7670d9ba736f80b36622777d533eff883ccc973c916e1662a4fc1"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/forearm_0.obj",
+      "path": "assets/ur10e/source/assets/forearm_0.obj",
+      "sha256": "7bdcfc8879ee27eedbcf9bda49133209a8988869ca810abed12510da52aec6ce"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/forearm_1.obj",
+      "path": "assets/ur10e/source/assets/forearm_1.obj",
+      "sha256": "add3f9150c7a39f9619d7a13cb730f836b0f5bb0538d22998b2ef2531ccb231d"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/forearm_2.obj",
+      "path": "assets/ur10e/source/assets/forearm_2.obj",
+      "sha256": "e7a4ef8ebc423dc89f3b709de5331e6546ba619515ab4e9f4173e1c4df50928c"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/forearm_3.obj",
+      "path": "assets/ur10e/source/assets/forearm_3.obj",
+      "sha256": "7963bc45f0caa7891e16e0e3aaf1b8255ccb31c45eb2e7189ae41ab79d769c6c"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/shoulder_0.obj",
+      "path": "assets/ur10e/source/assets/shoulder_0.obj",
+      "sha256": "dc2cb7d3c9a89fd5a7cc954f72448e0b096b8a55bd2552fbb5012cb63a8665ad"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/shoulder_1.obj",
+      "path": "assets/ur10e/source/assets/shoulder_1.obj",
+      "sha256": "29300890574301e471272b609462df7ce4c740c94b28d5d397742344884034dd"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/shoulder_2.obj",
+      "path": "assets/ur10e/source/assets/shoulder_2.obj",
+      "sha256": "c9d28de31d417e478e807ac181ca713ae85cd3e2ec7e2ee59411ffa441a1ea7c"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/upperarm_0.obj",
+      "path": "assets/ur10e/source/assets/upperarm_0.obj",
+      "sha256": "443e65b87bd6494ce60e1020750b8d12d75fb647b15a0a20c46cf6bcdd367189"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/upperarm_1.obj",
+      "path": "assets/ur10e/source/assets/upperarm_1.obj",
+      "sha256": "1faf80f2049a7d5f423ee5cb64b3660ffe7a7268952e547e0c41b0d8a8381280"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/upperarm_2.obj",
+      "path": "assets/ur10e/source/assets/upperarm_2.obj",
+      "sha256": "6bcadcbab26e2c93b6e6d1148d9f1ec3afbaed601d4b1c33e3ac655cd2713fce"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/upperarm_3.obj",
+      "path": "assets/ur10e/source/assets/upperarm_3.obj",
+      "sha256": "19b05ed2b694965b8aae32495297223f03c2c0fa21db9baa5283f3225abcc311"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/wrist1_0.obj",
+      "path": "assets/ur10e/source/assets/wrist1_0.obj",
+      "sha256": "29c7986338deaaac9c08e178cae1f6a6b72d35baeab9e431e0c9e0c94ad098d9"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/wrist1_1.obj",
+      "path": "assets/ur10e/source/assets/wrist1_1.obj",
+      "sha256": "793966ed9435327bbf6321bf519b20b5a5fc224af7b6cc3d77c5aa55facd97a2"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/wrist1_2.obj",
+      "path": "assets/ur10e/source/assets/wrist1_2.obj",
+      "sha256": "9f4ee5635420d34e25a4daa776a5c2eb0b9b5b16e952b98f298eee77bf9755aa"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/wrist2_0.obj",
+      "path": "assets/ur10e/source/assets/wrist2_0.obj",
+      "sha256": "a0a095dcd76a4658124530de86c5fe578d7a82d0dd2843345f75f2c37951d4b5"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/wrist2_1.obj",
+      "path": "assets/ur10e/source/assets/wrist2_1.obj",
+      "sha256": "613d0933859d74cef3afce04023c7bec7e600fef8461bd5a8fa687fc73b5297c"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/wrist2_2.obj",
+      "path": "assets/ur10e/source/assets/wrist2_2.obj",
+      "sha256": "8c3a94f34998629636c0b947d6f0122dbb675e51fa8885502d20cc1d7fdb7a3c"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/assets/wrist3.obj",
+      "path": "assets/ur10e/source/assets/wrist3.obj",
+      "sha256": "7d125e3585fe8a208042ea1dfd39e178efa946604e0e89c4f7dc1467a6354b22"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/scene.xml",
+      "path": "assets/ur10e/source/scene.xml",
+      "sha256": "cae678bb481e4cb1d01607bff92722e4862f804b2c0a302e27032874bfd837b7"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/ur10e.png",
+      "path": "assets/ur10e/source/ur10e.png",
+      "sha256": "d2b5d0884bef58d7cb91696599d199a916592423947f506900a102139f769a3f"
+    },
+    {
+      "source": "/home/haegu/Downloads/mujoco_menagerie-main/universal_robots_ur10e/ur10e.xml",
+      "path": "assets/ur10e/source/ur10e.xml",
+      "sha256": "9aa4e57b0b2c8e157dc06a7bd2babc9b43db870479a09ccde44a762afd1c3020"
+    },
+    {
+      "source": "/home/haegu/post_grasp_repair/outputs/robot_descriptions_cache/ur_description/config/ur10e/default_kinematics.yaml",
+      "path": "assets/ur10e/reference/default_kinematics.yaml",
+      "sha256": "4bf9a0dfdeb73d7a8b43171fd8a2cedffa9eaf6e342857df44229380e4ad2e49"
+    },
+    {
+      "source": "/home/haegu/post_grasp_repair/outputs/robot_descriptions_cache/ur_description/LICENSE",
+      "path": "assets/ur10e/reference/LICENSE",
+      "sha256": "143077f9f6a8de5a99f78c2c2472801fb53cf240277ef661642f079b9acdfff8"
+    }
+  ]
+}

@@ -5,11 +5,12 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "calibrated-bench-assets"
 version = "0.1.0"
-description = "Portable calibrated UR5e, WSG50 and perforated table MuJoCo scene"
+description = "Reusable MuJoCo manipulation scenes with UR arms, grippers, hands and perforated tables"
 requires-python = ">=3.10"
 dependencies = ["mujoco>=3.1.5,<4", "numpy>=1.24", "scipy>=1.10", "trimesh>=4", "pycollada>=0.8", "Pillow>=9"]
 
 [project.optional-dependencies]
+exp2 = ["mujoco>=3.13,<4"]
 test = ["pytest>=7"]
 
 [tool.setuptools]

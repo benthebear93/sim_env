@@ -1,7 +1,7 @@
-# Experimental Setup 1: UR5e and WSG-50 on a Perforated Table
+# Experimental Setup 1: UR5e and WSG-50 on a Siegmund Welding Table
 
 This repository contains the MuJoCo representation of the current physical
-**Experimental Setup 1**: a UR5e mounted on a perforated table, with a flange
+**Experimental Setup 1**: a UR5e mounted on a Siegmund welding table, with a flange
 adapter and a Schunk WSG-50 parallel gripper.
 
 The scene uses the table coordinate system from

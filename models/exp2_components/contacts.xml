@@ -1,0 +1,16 @@
+<mujoco>
+  <contact>
+    <exclude body1="hx5_d20_left_base" body2="finger_l_link5" />
+    <exclude body1="hx5_d20_left_base" body2="finger_l_link9" />
+    <exclude body1="hx5_d20_left_base" body2="finger_l_link13" />
+    <exclude body1="hx5_d20_left_base" body2="finger_l_link17" />
+    <exclude body1="hx5_d20_left_base" body2="finger_l_link1" />
+    <exclude body1="hx5_d20_left_base" body2="finger_l_link2" />
+    <exclude body1="hx5_d20_right_base" body2="finger_r_link5" />
+    <exclude body1="hx5_d20_right_base" body2="finger_r_link9" />
+    <exclude body1="hx5_d20_right_base" body2="finger_r_link13" />
+    <exclude body1="hx5_d20_right_base" body2="finger_r_link17" />
+    <exclude body1="hx5_d20_right_base" body2="finger_r_link1" />
+    <exclude body1="hx5_d20_right_base" body2="finger_r_link2" />
+  </contact>
+</mujoco>

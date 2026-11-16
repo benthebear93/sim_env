@@ -1,0 +1,56 @@
+<mujoco>
+  <actuator>
+    <general class="ur10e_size4" name="left_shoulder_pan" joint="left_shoulder_pan_joint" />
+    <general class="ur10e_size4" name="left_shoulder_lift" joint="left_shoulder_lift_joint" />
+    <general class="ur10e_size3_limited" name="left_elbow" joint="left_elbow_joint" />
+    <general class="ur10e_size2" name="left_wrist_1" joint="left_wrist_1_joint" />
+    <general class="ur10e_size2" name="left_wrist_2" joint="left_wrist_2_joint" />
+    <general class="ur10e_size2" name="left_wrist_3" joint="left_wrist_3_joint" />
+    <position name="finger_l_joint1" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint1" />
+    <position name="finger_l_joint2" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint2" />
+    <position name="finger_l_joint3" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint3" />
+    <position name="finger_l_joint4" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint4" />
+    <position name="finger_l_joint5" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint5" />
+    <position name="finger_l_joint6" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint6" />
+    <position name="finger_l_joint7" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint7" />
+    <position name="finger_l_joint8" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint8" />
+    <position name="finger_l_joint9" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint9" />
+    <position name="finger_l_joint10" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint10" />
+    <position name="finger_l_joint11" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint11" />
+    <position name="finger_l_joint12" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint12" />
+    <position name="finger_l_joint13" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint13" />
+    <position name="finger_l_joint14" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint14" />
+    <position name="finger_l_joint15" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint15" />
+    <position name="finger_l_joint16" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint16" />
+    <position name="finger_l_joint17" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint17" />
+    <position name="finger_l_joint18" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint18" />
+    <position name="finger_l_joint19" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint19" />
+    <position name="finger_l_joint20" class="hx5_d20_left/XM335-T323-T" joint="finger_l_joint20" />
+    <general class="ur10e_size4" name="right_shoulder_pan" joint="right_shoulder_pan_joint" />
+    <general class="ur10e_size4" name="right_shoulder_lift" joint="right_shoulder_lift_joint" />
+    <general class="ur10e_size3_limited" name="right_elbow" joint="right_elbow_joint" />
+    <general class="ur10e_size2" name="right_wrist_1" joint="right_wrist_1_joint" />
+    <general class="ur10e_size2" name="right_wrist_2" joint="right_wrist_2_joint" />
+    <general class="ur10e_size2" name="right_wrist_3" joint="right_wrist_3_joint" />
+    <position name="finger_r_joint1" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint1" />
+    <position name="finger_r_joint2" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint2" />
+    <position name="finger_r_joint3" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint3" />
+    <position name="finger_r_joint4" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint4" />
+    <position name="finger_r_joint5" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint5" />
+    <position name="finger_r_joint6" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint6" />
+    <position name="finger_r_joint7" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint7" />
+    <position name="finger_r_joint8" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint8" />
+    <position name="finger_r_joint9" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint9" />
+    <position name="finger_r_joint10" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint10" />
+    <position name="finger_r_joint11" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint11" />
+    <position name="finger_r_joint12" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint12" />
+    <position name="finger_r_joint13" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint13" />
+    <position name="finger_r_joint14" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint14" />
+    <position name="finger_r_joint15" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint15" />
+    <position name="finger_r_joint16" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint16" />
+    <position name="finger_r_joint17" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint17" />
+    <position name="finger_r_joint18" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint18" />
+    <position name="finger_r_joint19" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint19" />
+    <position name="finger_r_joint20" class="hx5_d20_right/XM335-T323-T" joint="finger_r_joint20" />
+  </actuator>
+</mujoco>
