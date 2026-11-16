@@ -57,6 +57,9 @@ def main():
     elif args.view == "tool":
         camera.lookat[:] = data.site("tcp" if args.setup == 2 else "flange").xpos
         camera.distance, camera.azimuth, camera.elevation = 0.55, 140, -18
+        if args.setup == 2:
+            camera.lookat[:] = 0.75 * data.site("tcp").xpos + 0.25 * data.site("flange").xpos
+            camera.distance = 0.30
     elif args.view == "top":
         camera.lookat[:] = [0.6, -0.4, 0]
         camera.distance, camera.azimuth, camera.elevation = 1.55, 90, -89.9
