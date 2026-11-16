@@ -1,0 +1,81 @@
+<mujoco>
+  <worldbody>
+    <body name="ur_base" pos="0.124614895081 -0.375523055765 0.041" quat="0.923987307342 0.00113897541951 0.00026481675647 0.382421349401">
+      <site name="ur_base_frame" size="0.004" group="4" />
+      <body name="urdf_model" pos="-0.00779516260327 6.53971499208e-05 0.00625528215603" quat="6.12323399574e-17 0 0 1">
+        <body name="urdf_base_link" pos="0 0 0" quat="1 0 0 0">
+          <body name="urdf_base_link_inertia" pos="0 0 0" quat="6.12323399574e-17 0 0 1">
+            <inertial pos="0 0 0" mass="4.0" fullinertia="0.00443333156 0.00443333156 0.0072 0 0 0" />
+            <geom type="mesh" mesh="ur5e_base_0" rgba="0.278431372549 0.278431372549 0.278431372549 1" contype="0" conaffinity="0" group="2" pos="0 0 0" quat="6.12323399574e-17 0 0 1" />
+            <geom type="mesh" mesh="ur5e_base_1" rgba="0.0313725490196 0.0313725490196 0.0313725490196 1" contype="0" conaffinity="0" group="2" pos="0 0 0" quat="6.12323399574e-17 0 0 1" />
+            <geom name="ur_collision_base_link_inertia0" type="mesh" mesh="ur_collision_base_link_inertia0" group="3" pos="0 0 0" quat="6.12323399574e-17 0 0 1" />
+            <body name="urdf_shoulder_link" pos="0 0 0.1625" quat="1 0 0 0">
+              <inertial pos="0 -0.00193 -0.02561" mass="3.761" fullinertia="0.0070021 0.00657286 0.00648091 1.053e-05 7.3e-07 -0.00049994" />
+              <joint name="shoulder_pan_joint" type="hinge" axis="0 0 1" range="-6.283185307179586 6.283185307179586" damping="2" armature="0.1" />
+              <geom type="mesh" mesh="ur5e_shoulder_0" rgba="0.278431372549 0.278431372549 0.278431372549 1" contype="0" conaffinity="0" group="2" pos="0 0 0" quat="6.12323399574e-17 0 0 1" />
+              <geom type="mesh" mesh="ur5e_shoulder_1" rgba="0.0313725490196 0.0313725490196 0.0313725490196 1" contype="0" conaffinity="0" group="2" pos="0 0 0" quat="6.12323399574e-17 0 0 1" />
+              <geom type="mesh" mesh="ur5e_shoulder_2" rgba="0.490196078431 0.678431372549 0.8 1" contype="0" conaffinity="0" group="2" pos="0 0 0" quat="6.12323399574e-17 0 0 1" />
+              <geom name="ur_collision_shoulder_link0" type="mesh" mesh="ur_collision_shoulder_link0" group="3" pos="0 0 0" quat="6.12323399574e-17 0 0 1" />
+              <body name="urdf_upper_arm_link" pos="0 0 0" quat="0.707106781114 0.707106781259 0 0">
+                <inertial pos="-0.2125 0 0.11336" mass="8.058" fullinertia="0.01505885 0.33388086 0.33247207 -5.4e-05 5.63e-06 -1.81e-06" />
+                <joint name="shoulder_lift_joint" type="hinge" axis="0 0 1" range="-6.283185307179586 6.283185307179586" damping="2" armature="0.1" />
+                <geom type="mesh" mesh="ur5e_upperarm_0" rgba="0.490196078431 0.678431372549 0.8 1" contype="0" conaffinity="0" group="2" pos="0 0 0.138" quat="0.5 0.5 -0.5 -0.5" />
+                <geom type="mesh" mesh="ur5e_upperarm_1" rgba="0.278431372549 0.278431372549 0.278431372549 1" contype="0" conaffinity="0" group="2" pos="0 0 0.138" quat="0.5 0.5 -0.5 -0.5" />
+                <geom type="mesh" mesh="ur5e_upperarm_2" rgba="0.0313725490196 0.0313725490196 0.0313725490196 1" contype="0" conaffinity="0" group="2" pos="0 0 0.138" quat="0.5 0.5 -0.5 -0.5" />
+                <geom type="mesh" mesh="ur5e_upperarm_3" rgba="0.490196078431 0.678431372549 0.8 1" contype="0" conaffinity="0" group="2" pos="0 0 0.138" quat="0.5 0.5 -0.5 -0.5" />
+                <geom type="mesh" mesh="ur5e_upperarm_4" rgba="0.819607843137 0.819607843137 0.819607843137 1" contype="0" conaffinity="0" group="2" pos="0 0 0.138" quat="0.5 0.5 -0.5 -0.5" />
+                <geom type="mesh" mesh="ur5e_upperarm_5" rgba="0.0313725490196 0.0313725490196 0.0313725490196 1" contype="0" conaffinity="0" group="2" pos="0 0 0.138" quat="0.5 0.5 -0.5 -0.5" />
+                <geom type="mesh" mesh="ur5e_upperarm_6" rgba="0.278431372549 0.278431372549 0.278431372549 1" contype="0" conaffinity="0" group="2" pos="0 0 0.138" quat="0.5 0.5 -0.5 -0.5" />
+                <geom type="mesh" mesh="ur5e_upperarm_7" rgba="0.0313725490196 0.0313725490196 0.0313725490196 1" contype="0" conaffinity="0" group="2" pos="0 0 0.138" quat="0.5 0.5 -0.5 -0.5" />
+                <geom name="ur_collision_upper_arm_link0" type="mesh" mesh="ur_collision_upper_arm_link0" group="3" pos="0 0 0.138" quat="0.5 0.5 -0.5 -0.5" />
+                <body name="urdf_forearm_link" pos="-0.425 0 0" quat="1 0 0 0">
+                  <inertial pos="-0.2422 0 0.0265" mass="2.846" fullinertia="0.00399632 0.07879254 0.0784851 -1.365e-05 0.00137272 -6.6e-06" />
+                  <joint name="elbow_joint" type="hinge" axis="0 0 1" range="-3.141592653589793 3.141592653589793" damping="2" armature="0.1" />
+                  <geom type="mesh" mesh="ur5e_forearm_0" rgba="0.278431372549 0.278431372549 0.278431372549 1" contype="0" conaffinity="0" group="2" pos="0 0 0.007" quat="0.5 0.5 -0.5 -0.5" />
+                  <geom type="mesh" mesh="ur5e_forearm_1" rgba="0.278431372549 0.278431372549 0.278431372549 1" contype="0" conaffinity="0" group="2" pos="0 0 0.007" quat="0.5 0.5 -0.5 -0.5" />
+                  <geom type="mesh" mesh="ur5e_forearm_2" rgba="0.0313725490196 0.0313725490196 0.0313725490196 1" contype="0" conaffinity="0" group="2" pos="0 0 0.007" quat="0.5 0.5 -0.5 -0.5" />
+                  <geom type="mesh" mesh="ur5e_forearm_3" rgba="0.819607843137 0.819607843137 0.819607843137 1" contype="0" conaffinity="0" group="2" pos="0 0 0.007" quat="0.5 0.5 -0.5 -0.5" />
+                  <geom type="mesh" mesh="ur5e_forearm_4" rgba="0.0313725490196 0.0313725490196 0.0313725490196 1" contype="0" conaffinity="0" group="2" pos="0 0 0.007" quat="0.5 0.5 -0.5 -0.5" />
+                  <geom type="mesh" mesh="ur5e_forearm_5" rgba="0.490196078431 0.678431372549 0.8 1" contype="0" conaffinity="0" group="2" pos="0 0 0.007" quat="0.5 0.5 -0.5 -0.5" />
+                  <geom type="mesh" mesh="ur5e_forearm_6" rgba="0.0313725490196 0.0313725490196 0.0313725490196 1" contype="0" conaffinity="0" group="2" pos="0 0 0.007" quat="0.5 0.5 -0.5 -0.5" />
+                  <geom name="ur_collision_forearm_link0" type="mesh" mesh="ur_collision_forearm_link0" group="3" pos="0 0 0.007" quat="0.5 0.5 -0.5 -0.5" />
+                  <body name="urdf_wrist_1_link" pos="-0.3922 0 0.1333" quat="1 0 0 0">
+                    <inertial pos="0 -0.01634 -0.0018" mass="1.37" fullinertia="0.00165491 0.00126279 0.00135962 4.38e-06 -2.82e-06 -0.00010157" />
+                    <joint name="wrist_1_joint" type="hinge" axis="0 0 1" range="-6.283185307179586 6.283185307179586" damping="2" armature="0.1" />
+                    <geom type="mesh" mesh="ur5e_wrist1_0" rgba="0.278431372549 0.278431372549 0.278431372549 1" contype="0" conaffinity="0" group="2" pos="0 0 -0.127" quat="0.707106781187 0.707106781187 0 0" />
+                    <geom type="mesh" mesh="ur5e_wrist1_1" rgba="0.490196078431 0.678431372549 0.8 1" contype="0" conaffinity="0" group="2" pos="0 0 -0.127" quat="0.707106781187 0.707106781187 0 0" />
+                    <geom type="mesh" mesh="ur5e_wrist1_2" rgba="0.0313725490196 0.0313725490196 0.0313725490196 1" contype="0" conaffinity="0" group="2" pos="0 0 -0.127" quat="0.707106781187 0.707106781187 0 0" />
+                    <geom name="ur_collision_wrist_1_link0" type="mesh" mesh="ur_collision_wrist_1_link0" group="3" pos="0 0 -0.127" quat="0.707106781187 0.707106781187 0 0" />
+                    <body name="urdf_wrist_2_link" pos="0 -0.0997 -2.0448811823e-11" quat="0.707106781114 0.707106781259 0 0">
+                      <inertial pos="0 0.01634 -0.0018" mass="1.3" fullinertia="0.00135617 0.00096614 0.00127827 4.44e-06 2.74e-06 5.048e-05" />
+                      <joint name="wrist_2_joint" type="hinge" axis="0 0 1" range="-6.283185307179586 6.283185307179586" damping="2" armature="0.1" />
+                      <geom type="mesh" mesh="ur5e_wrist2_0" rgba="0.278431372549 0.278431372549 0.278431372549 1" contype="0" conaffinity="0" group="2" pos="0 0 -0.0997" quat="1 0 0 0" />
+                      <geom type="mesh" mesh="ur5e_wrist2_1" rgba="0.490196078431 0.678431372549 0.8 1" contype="0" conaffinity="0" group="2" pos="0 0 -0.0997" quat="1 0 0 0" />
+                      <geom type="mesh" mesh="ur5e_wrist2_2" rgba="0.0313725490196 0.0313725490196 0.0313725490196 1" contype="0" conaffinity="0" group="2" pos="0 0 -0.0997" quat="1 0 0 0" />
+                      <geom name="ur_collision_wrist_2_link0" type="mesh" mesh="ur_collision_wrist_2_link0" group="3" pos="0 0 -0.0997" quat="1 0 0 0" />
+                      <body name="urdf_wrist_3_link" pos="0 0.0996 -2.04283014801e-11" quat="-0.707106781114 0.707106781259 -8.65956056235e-17 -8.8805267937e-27">
+                        <inertial pos="0 0 -0.001159" mass="0.365" fullinertia="0.00018694 0.00018908 0.00025756 6e-08 -1.7e-07 -9.2e-07" />
+                        <joint name="wrist_3_joint" type="hinge" axis="0 0 1" range="-6.283185307179586 6.283185307179586" damping="2" armature="0.1" />
+                        <geom type="mesh" mesh="ur5e_wrist3_0" rgba="0.819607843137 0.819607843137 0.819607843137 1" contype="0" conaffinity="0" group="2" pos="0 0 -0.0989" quat="0.707106781187 0.707106781187 0 0" />
+                        <geom name="ur_collision_wrist_3_link0" type="mesh" mesh="ur_collision_wrist_3_link0" group="3" pos="0 0 -0.0989" quat="0.707106781187 0.707106781187 0 0" />
+                        <body name="urdf_ft_frame" pos="0 0 0" quat="6.12323399574e-17 1 0 0" />
+                        <body name="urdf_flange" pos="0 0 0" quat="0.5 -0.5 -0.5 -0.5">
+                          <body name="urdf_tool0" pos="0 0 0" quat="0.5 0.5 0.5 0.5">
+                            <site name="flange" size="0.004" group="4" />
+                            <include file="../components/flange_adapter.xml" />
+                            <include file="wsg50_gelsight.xml" />
+                          </body>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+          <body name="urdf_base" pos="0 0 0" quat="6.12323399574e-17 0 0 1" />
+        </body>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

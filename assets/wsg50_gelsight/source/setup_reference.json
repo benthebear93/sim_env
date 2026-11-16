@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "robot": "UR5e",
+  "gripper": "WSG50-110",
+  "default_object": "cylinder",
+  "units": {"length": "m", "angle": "rad", "force": "N"},
+  "mount_chain": ["ur_flange", "adapter_plate", "wsg50", "custom_fingers", "gelsight_contact", "rod"],
+  "adapter_plate": {
+    "shape": "circular_plate",
+    "thickness_m": 0.02,
+    "thickness_source": "user confirmed 2026-11-06",
+    "diameter_m": null,
+    "mass_kg": null,
+    "axial_offset_convention": "20 mm along the flange mounting normal; gripper mounting rotation is not measured"
+  },
+  "gripper_opening": {
+    "full_travel_mm": 110,
+    "closure_from_full_open_mm": "110 - opening_mm",
+    "surface_gap_calibration": null,
+    "note": "Opening is the WSG travel register, not a calibrated gap between GelSight surfaces."
+  },
+  "finger_mesh": {
+    "path": "hardware/WSG50_GELSIGHT_fin.stl",
+    "bounds_mesh_units": [[0, -46, 0], [29, 15, 30]],
+    "assumed_scale_to_m": 0.001,
+    "unit_status": "STL is unitless; mm is inferred from dimensions and must be checked against the part",
+    "T_wsg_finger_left": null,
+    "T_wsg_finger_right": null,
+    "T_finger_gel_surface": null
+  },
+  "T_flange_wsg": null,
+  "object_parameters": "hardware/rod_contact_v02/parameters.json",
+  "objects": {
+    "cylinder": "hardware/rod_contact_v02/rod_cylinder_v02.stl",
+    "flat": "hardware/rod_contact_v02/rod_flat_v02.stl"
+  },
+  "unknown_for_mujoco": [
+    "Flange-to-WSG rotation and full translation, including gripper origin convention",
+    "Finger mounting transforms and GelSight contact surface transform",
+    "Measured object/finger/adapter masses, centers of mass and inertias",
+    "Actual grasp location, gel thickness and opening-to-surface-gap calibration",
+    "Contact friction, compliance and damping to identify from trials"
+  ]
+}

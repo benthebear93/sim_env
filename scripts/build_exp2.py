@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Assemble the dual-UR10e/HX5-D20 scene from the local asset library."""
+"""Add the short custom fingers and dual GelSight Minis to the Exp 1 bench."""
 from __future__ import annotations
 
 import argparse
@@ -10,226 +10,157 @@ import sys
 import xml.etree.ElementTree as ET
 
 import numpy as np
-from scipy.optimize import least_squares
 from scipy.spatial.transform import Rotation
+import trimesh
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from sim_env.bench import JOINT_NAMES
+from sim_env.bench import JOINT_NAMES, load_scene
 
 
 def numbers(values):
-    return " ".join(f"{float(value):.12g}" for value in np.ravel(values))
+    return " ".join(f"{float(v):.12g}" for v in np.ravel(values))
 
 
-def quaternion(rpy_deg):
-    q = Rotation.from_euler("xyz", rpy_deg, degrees=True).as_quat()
+def quaternion(rotation):
+    q = Rotation.from_matrix(rotation).as_quat()
     return numbers(q[[3, 0, 1, 2]])
 
 
 def save_xml(root, path):
-    ET.indent(root, space="  ")
     path.parent.mkdir(parents=True, exist_ok=True)
+    ET.indent(root, space="  ")
     ET.ElementTree(root).write(path, encoding="unicode")
     with path.open("a") as stream:
         stream.write("\n")
 
 
-def prefix_identifiers(element, prefix):
-    """Prefix object definitions/references while retaining file paths."""
-    attributes = {"name", "class", "childclass", "mesh", "material", "joint",
-                  "body1", "body2", "joint1", "joint2", "site", "target"}
-    for node in element.iter():
-        for attr in attributes:
-            if attr in node.attrib:
-                node.set(attr, prefix + node.get(attr))
+def sensor_mount(config, sign, side, half_body_depth):
+    """Source sensor frame: +x outward, +z toward the WSG, gel center at zero."""
+    mount, grip, sensor = config["mount"], config["gripper"], config["sensor"]
+    rotation = (Rotation.from_euler("z", 0 if sign == 1 else 180, degrees=True).as_matrix()
+                @ Rotation.from_euler("y", mount[f"{side}_sensor_tilt_deg"], degrees=True).as_matrix())
+    mount_point = np.array(mount["finger_mount_point_sensor_m"])
+    center = np.array([sign * (grip["surface_gap_at_reference_m"]/2 + sensor["gel_size_m"][0]/2),
+                       0, -(half_body_depth + mount["carriage_extension_m"] + mount_point[2])])
+    jaw = center + rotation @ mount_point - [sign*grip["reference_opening_m"]/2, 0, 0]
+    return rotation, jaw, -rotation @ mount_point
 
 
-def include_fragment(root, name, elements):
-    fragment = ET.Element("mujoco")
-    for element in elements:
-        fragment.append(element)
-    save_xml(fragment, ROOT / "models/exp2_components" / f"{name}.xml")
-    ET.SubElement(root, "include", file=f"exp2_components/{name}.xml")
-
-
-def add_tables(world, assets, config):
-    # Reuse the exact visual/collision tiles and complete perforated table
-    # generated for Setup 1. No changes are made to those shared assets.
-    requested = json.loads((ROOT / config["table_template"]).read_text())["table"]
-    generated = json.loads((ROOT / "models/assembly.json").read_text())["config"]["table"]
-    if requested != generated:
-        raise ValueError("The table template changed; run scripts/build_scene.py before building Setup 2.")
-    source_assets = ET.parse(ROOT / "models/components/assets.xml").getroot()
-    for mesh in source_assets.findall("asset/mesh"):
-        if mesh.get("name", "").startswith("table_"):
-            assets.append(copy.deepcopy(mesh))
-    template = ET.parse(ROOT / "models/components/table.xml").find("worldbody/body")
-    for side, color in [("left", "0.32 0.35 0.38 1"), ("right", "0.30 0.33 0.36 1")]:
-        body = copy.deepcopy(template)
-        # Mesh assets are shared; only names need a per-table namespace.
-        for node in body.iter():
-            if "name" in node.attrib:
-                node.set("name", side + "_" + node.get("name"))
-            if node.tag == "geom" and node.get("group") == "2":
-                node.set("rgba", color)
-        body.set("pos", numbers(config["tables"][f"{side}_origin_m"]))
-        world.append(body)
-    # A visual seam identifies the touching plates without adding a collision
-    # wall or changing the through-hole geometry.
-    right_origin = np.asarray(config["tables"]["right_origin_m"])
-    table_min, table_max = np.asarray(requested["min_xy_m"]), np.asarray(requested["max_xy_m"])
-    seam_position = right_origin + [table_min[0], (table_min[1]+table_max[1])/2, requested["top_z_m"]+.00015]
-    ET.SubElement(world, "geom", name="table_join_marker", type="box",
-                  pos=numbers(seam_position), size=numbers([.0006,(table_max[1]-table_min[1])/2,.00015]),
-                  rgba="0.12 0.14 0.16 1", contype="0", conaffinity="0", group="2")
-
-
-def add_arm(world, assets, defaults, actuators, contacts, config, side):
-    source_path = ROOT / "assets/ur10e/source/ur10e.xml"
-    source = ET.parse(source_path).getroot()
-    # One shared, namespaced asset/default set supports both arm instances.
-    if side == "left":
-        default = copy.deepcopy(source.find("default"))
-        prefix_identifiers(default, "ur10e_")
-        defaults.extend(default)
-        for item in source.find("asset"):
-            item = copy.deepcopy(item)
-            if item.tag == "mesh":
-                item.set("name", item.get("name", Path(item.get("file")).stem))
-                item.set("file", "../assets/ur10e/source/assets/" + item.get("file"))
-            prefix_identifiers(item, "ur10e_")
-            assets.append(item)
-    body = copy.deepcopy(source.find("worldbody/body"))
-    for node in body.iter():
-        if "name" in node.attrib:
-            node.set("name", side + "_" + node.get("name"))
-        for attr in ("class", "childclass", "mesh", "material"):
-            if attr in node.attrib:
-                node.set(attr, "ur10e_" + node.get(attr))
-    placement = config["robots"][side]
-    if placement["hand"] != side:
-        raise ValueError(f"Setup 2 requires the matching {side} HX5-D20 hand.")
-    wrapper = ET.SubElement(world, "body", name=f"{side}_mount",
-                            pos=numbers(placement["base_position_m"]),
-                            quat=quaternion([0, 0, placement["mount_yaw_deg"]]))
-    wrapper.append(body)
-    ET.SubElement(wrapper, "site", name=f"{side}_base_frame", size="0.004", group="4")
-    height = placement["base_position_m"][2]
-    ET.SubElement(wrapper, "geom", name=f"{side}_base_spacer", type="cylinder",
-                  pos=numbers([0, 0, -height/2]),
-                  size=numbers([config["mount"]["spacer_radius_m"], height/2]),
-                  rgba="0.19 0.20 0.22 1", contype="0", conaffinity="0", group="2")
-    for actuator in source.find("actuator"):
-        item = copy.deepcopy(actuator)
-        item.set("name", side + "_" + item.get("name"))
-        item.set("joint", side + "_" + item.get("joint"))
-        item.set("class", "ur10e_" + item.get("class"))
-        actuators.append(item)
-    wrist = body.find(f".//body[@name='{side}_wrist_3_link']")
-    site = wrist.find(f"site[@name='{side}_attachment_site']")
-    site.set("pos", numbers([0, config["mount"]["tool0_wrist3_y_m"], 0]))
-    flange = ET.SubElement(wrist, "body", name=f"{side}_flange_frame",
-                           pos=site.get("pos"), quat=site.get("quat"))
-    ET.SubElement(flange, "site", name=f"{side}_flange", size="0.004", group="4")
-    adapter = config["mount"]
-    thickness = adapter["adapter_thickness_m"]
-    ET.SubElement(flange, "geom", name=f"{side}_hand_adapter", type="cylinder",
-                  size=numbers([adapter["adapter_radius_m"], thickness/2]),
-                  pos=numbers([0, 0, thickness/2]), rgba="0.34 0.36 0.39 1",
-                  density=str(adapter["adapter_density_kg_m3"]))
-    hand_mount = ET.SubElement(flange, "body", name=f"{side}_hand_mount",
-                               pos=numbers([0, 0, thickness]),
-                               quat=quaternion(config["hand_mount_rpy_deg"]))
-    ET.SubElement(hand_mount, "site", name=f"{side}_hand_base_frame", size="0.004", group="4")
-    hand_path = ROOT / f"assets/robotis_hx5_d20/mujoco/hx5_d20_rev2/hx5_d20_{side}.xml"
-    hand = ET.parse(hand_path).getroot()
-    defaults.extend(copy.deepcopy(hand.find("default")))
-    for item in hand.find("asset"):
-        item = copy.deepcopy(item)
-        item.set("file", "../assets/robotis_hx5_d20/meshes/hx5_d20_rev2/" + item.get("file"))
-        assets.append(item)
-    hand_mount.append(copy.deepcopy(hand.find("worldbody/body")))
-    actuators.extend(copy.deepcopy(hand.find("actuator")))
-    contacts.extend(copy.deepcopy(hand.find("contact")))
-    # No URDF base calibration is transferred from the distinct UR5e bench.
-
-
-def solve_ready_pose(scene_path, config):
-    import mujoco
-    model = mujoco.MjModel.from_xml_path(str(scene_path.resolve()))
-    data = mujoco.MjData(model)
-    solutions = {}
-    for side in ("left", "right"):
-        placement = config["robots"][side]
-        ids = [model.joint(f"{side}_{name}").id for name in JOINT_NAMES]
-        addresses = model.jnt_qposadr[ids]
-        target_pos = np.array(placement["flange_target_position_m"])
-        target_rot = Rotation.from_euler("xyz", placement["flange_target_rpy_deg"], degrees=True).as_matrix()
-        seed = np.deg2rad(placement["ik_seed_deg"])
-        site_id = model.site(f"{side}_flange").id
-
-        def residual(q):
-            data.qpos[addresses] = q
-            mujoco.mj_kinematics(model, data)
-            position_error = data.site_xpos[site_id] - target_pos
-            rotation_error = Rotation.from_matrix(target_rot.T @ data.site_xmat[site_id].reshape(3,3)).as_rotvec()
-            return np.r_[5 * position_error, rotation_error]
-
-        fit = least_squares(residual, seed, bounds=model.jnt_range[ids].T,
-                            ftol=1e-12, xtol=1e-12, gtol=1e-12, max_nfev=500)
-        error = residual(fit.x)
-        if np.linalg.norm(error) > 1e-6:
-            raise RuntimeError(f"{side} ready-pose IK did not converge: {error}")
-        solutions[side] = fit.x.tolist()
-    for aid in range(model.nu):
-        joint_id = model.actuator_trnid[aid, 0]
-        data.ctrl[aid] = data.qpos[model.jnt_qposadr[joint_id]]
-    mujoco.mj_forward(model, data)
-    collisions = [{"geom1": model.geom(c.geom1).name, "geom2": model.geom(c.geom2).name,
-                   "distance_m": float(c.dist)} for c in data.contact if c.dist < -1e-5]
-    if collisions:
-        raise RuntimeError(f"Ready pose has penetrating contacts: {collisions[:12]}")
-    return data.qpos.copy(), data.ctrl.copy(), solutions
+def prepare_meshes(config):
+    directory = ROOT / "assets/wsg50_gelsight"
+    mesh = trimesh.load_mesh(directory / "source/WSG50_GELSIGHT_fin.stl")
+    np.testing.assert_allclose(mesh.bounds, [[0, -46, 0], [29, 15, 30]], atol=.001)
+    registration = config["finger_source_to_sensor"]
+    matrix = np.eye(4)
+    matrix[:3, :3] = registration["scale_to_m"] * np.array(registration["rotation_matrix"])
+    matrix[:3, 3] = registration["translation_m"]
+    mesh.apply_transform(matrix)
+    (directory / "meshes").mkdir(exist_ok=True)
+    mesh.export(directory / "meshes/custom_finger.obj")
+    return matrix, mesh.bounds.tolist()
 
 
 def build(config_path=None):
     config = json.loads(Path(config_path or ROOT / "configs/exp2.json").read_text())
-    root = ET.Element("mujoco", model="exp2_dual_ur10e_hx5_d20")
-    ET.SubElement(root, "compiler", angle="radian", autolimits="true", fusestatic="false")
-    ET.SubElement(root, "option", timestep=str(config["timestep_s"]), integrator="implicitfast",
-                  cone="elliptic", impratio="10", gravity="0 0 -9.81")
-    ET.SubElement(root, "statistic", center="1.2 -0.4 0.35", extent="2.8")
-    visual = ET.SubElement(root, "visual")
-    ET.SubElement(visual, "global", offwidth="1800", offheight="1200")
-    ET.SubElement(visual, "headlight", ambient="0.4 0.4 0.4", diffuse="0.65 0.65 0.65", specular="0.15 0.15 0.15")
-    ET.SubElement(visual, "quality", shadowsize="4096")
-    defaults = ET.Element("default")
-    ET.SubElement(defaults, "geom", friction="0.8 0.005 0.0001")
-    assets, table_world, robot_world = ET.Element("asset"), ET.Element("worldbody"), ET.Element("worldbody")
-    ET.SubElement(assets, "texture", type="skybox", builtin="gradient", rgb1="0.22 0.25 0.29",
-                  rgb2="0.06 0.08 0.1", width="512", height="3072")
-    actuators, contacts = ET.Element("actuator"), ET.Element("contact")
-    ET.SubElement(table_world, "light", pos="1.2 -0.2 2.5", dir="0 0 -1", diffuse="0.7 0.7 0.7")
-    add_tables(table_world, assets, config)
-    for side in ("left", "right"):
-        add_arm(robot_world, assets, defaults, actuators, contacts, config, side)
-    for name, element in [("defaults", defaults), ("assets", assets), ("tables", table_world),
-                           ("robots", robot_world), ("actuators", actuators), ("contacts", contacts)]:
-        include_fragment(root, name, [element])
+    base = json.loads((ROOT / config["base_config"]).read_text())
+    base_assembly = json.loads((ROOT / "models/assembly.json").read_text())
+    if base != base_assembly["config"]:
+        raise ValueError("Exp 1 configuration changed; run scripts/build_scene.py first.")
+    grip, sensor = config["gripper"], config["sensor"]
+    maximum = base["gripper"]["maximum_opening_m"]
+    if not 0 <= grip["opening_m"] <= maximum:
+        raise ValueError("Initial WSG opening exceeds travel limits.")
+    registration, finger_bounds = prepare_meshes(config)
+    components = ROOT / "models/exp2_components"
+
+    root = ET.parse(ROOT / "models/bench.xml").getroot()
+    root.set("model", "exp2_ur5e_wsg50_dual_gelsight")
+    for include in root.findall("include"):
+        if include.get("file") == "components/robot.xml":
+            include.set("file", "exp2_components/robot.xml")
+    ET.SubElement(root, "include", file="exp2_components/assets.xml")
+    robot = ET.parse(ROOT / "models/components/robot.xml").getroot()
+    tool = robot.find(".//body[@name='urdf_tool0']")
+    for include in tool.findall("include"):
+        include.set("file", "wsg50_gelsight.xml" if include.get("file") == "wsg50.xml"
+                    else "../components/" + include.get("file"))
+    save_xml(robot, components / "robot.xml")
+
+    assets = ET.Element("mujoco")
+    asset = ET.SubElement(assets, "asset")
+    for name, relative in [("gs_custom_finger", "meshes/custom_finger.obj"),
+                           ("gs_case", "source/case.obj"), ("gs_back_cover", "source/back_cover.obj")]:
+        ET.SubElement(asset, "mesh", name=name, file="../assets/wsg50_gelsight/" + relative)
+    save_xml(assets, components / "assets.xml")
+
+    gripper = ET.Element("mujoco")
+    # Preserve Exp 1's body, flange adapter and calibration exactly. Only its
+    # two simplified box fingers and TCP are replaced by the sensor assembly.
+    old_gripper = ET.parse(ROOT / "models/components/wsg50.xml").getroot()
+    gripper.append(copy.deepcopy(old_gripper.find("body[@name='wsg50']")))
+    half_depth = base["gripper"]["body_size_sdf_m"][1] / 2
+    center_z = base["flange_adapter"]["thickness_m"] + half_depth
+    mount_frame = ET.SubElement(gripper, "body", name="gelsight_wsg_frame",
+                               pos=numbers([0, 0, center_z]), quat="0 1 0 0")
+    mount_frames, surface_centers = {}, []
+    for side, sign in [("left", -1), ("right", 1)]:
+        rotation, jaw_position, sensor_position = sensor_mount(config, sign, side, half_depth)
+        jaw = ET.SubElement(mount_frame, "body", name=f"wsg_{side}_finger", pos=numbers(jaw_position))
+        # The same named actuators and travel limits are shared with Exp 1.
+        original = old_gripper.find(f"body[@name='wsg_{side}_finger']/joint")
+        jaw.append(copy.deepcopy(original))
+        ET.SubElement(jaw, "geom", name=f"wsg_{side}_carriage", type="box", size=".01 .015 .007",
+                      pos="0 0 .007", rgba=".18 .2 .23 1", mass=str(sensor["carriage_mass_kg"]))
+        body = ET.SubElement(jaw, "body", name=f"gelsight_{side}", pos=numbers(sensor_position),
+                             quat=quaternion(rotation))
+        ET.SubElement(body, "inertial", pos=numbers(sensor["assembly_com_sensor_m"]),
+                      mass=str(sensor["sensor_mass_kg"] + sensor["finger_mass_kg"]),
+                      diaginertia=numbers(sensor["assembly_diaginertia_kg_m2"]))
+        for part, mesh, color in [("finger", "gs_custom_finger", ".12 .12 .14 1"),
+                                  ("case", "gs_case", ".08 .09 .1 1"),
+                                  ("back_cover", "gs_back_cover", ".14 .15 .16 1")]:
+            ET.SubElement(body, "geom", name=f"gelsight_{side}_{part}", type="mesh", mesh=mesh,
+                          rgba=color, contype="0", conaffinity="0", group="2", mass="0")
+        # MuJoCo uses the convex hull for mesh collisions. The short bracket's
+        # pockets/bolt holes are visual details, not resolved collision cavities.
+        ET.SubElement(body, "geom", name=f"gelsight_{side}_finger_collision", type="mesh",
+                      mesh="gs_custom_finger", group="3", mass="0")
+        ET.SubElement(body, "geom", name=f"gelsight_{side}_housing_collision", type="box",
+                      pos=".014 0 0", size=".011875 .014 .016002", group="3", mass="0")
+        ET.SubElement(body, "geom", name=f"gelsight_{side}_gel", type="box",
+                      size=numbers(np.array(sensor["gel_size_m"])/2), rgba=".12 .68 .65 .85", mass="0")
+        surface = [-sensor["gel_size_m"][0]/2, 0, 0]
+        for name in [f"gelsight_{side}_surface", f"wsg_{side}_inner"]:
+            ET.SubElement(body, "site", name=name, pos=numbers(surface), size=".001", group="4")
+        surface_centers.append(jaw_position + [sign*grip["opening_m"]/2, 0, 0]
+                               + sensor_position + rotation @ surface)
+        mount_frames[side] = dict(jaw_position_wsg_m=jaw_position.tolist(),
+                                 sensor_position_jaw_m=sensor_position.tolist(),
+                                 sensor_rotation_jaw=rotation.tolist())
+    tcp = np.diag([1, -1, -1]) @ np.mean(surface_centers, axis=0) + [0, 0, center_z]
+    ET.SubElement(gripper, "site", name="tcp", pos=numbers(tcp), size=".004", group="4")
+    save_xml(gripper, components / "wsg50_gelsight.xml")
+    key = root.find("keyframe/key[@name='ready']")
+    ready = np.r_[np.deg2rad(base["robot"]["initial_q_deg"]), np.repeat(grip["opening_m"]/2, 2)]
+    key.set("qpos", numbers(ready))
+    key.set("ctrl", numbers(ready))
     output = ROOT / "models/exp2.xml"
     save_xml(root, output)
-    qpos, ctrl, solved = solve_ready_pose(output, config)
-    keyframe = ET.SubElement(root, "keyframe")
-    ET.SubElement(keyframe, "key", name="ready", qpos=numbers(qpos), ctrl=numbers(ctrl))
-    save_xml(root, output)
-    manifest = {"config": config, "ready_arm_q_rad": solved,
-                "ready_arm_q_deg": {side: np.rad2deg(q).tolist() for side,q in solved.items()},
-                "nq": len(qpos), "nu": len(ctrl), "total_through_holes": 768,
-                "installation_status": "Nominal layout; no measured Exp 2 base calibration applied"}
+    model, data = load_scene(output)
+    penetrations = [(model.geom(c.geom1).name, model.geom(c.geom2).name, float(c.dist))
+                    for c in data.contact if c.dist < -1e-5]
+    if penetrations:
+        raise RuntimeError(f"Initial assembly has penetrating contacts: {penetrations[:10]}")
+    manifest = dict(config=config, base_config=base, finger_source_to_sensor=registration.tolist(),
+                    finger_bounds_sensor_m=finger_bounds, mounts=mount_frames, tcp_tool0_m=tcp.tolist(),
+                    table_from_ur_base=base_assembly["table_from_ur_base"],
+                    ur_base_from_urdf_model=base_assembly["ur_base_from_urdf_model"],
+                    nq=model.nq, nu=model.nu,
+                    calibration_status="Exp 1 robot/table calibration; nominal GelSight mounting and opening zero",
+                    contact_model="Rigid gel boxes; housing boxes; convex hulls of custom fingers; no optical or continuum gel model")
     (ROOT / "models/exp2_assembly.json").write_text(json.dumps(manifest, indent=2) + "\n")
-    print(f"Built {output}: {len(qpos)} DOF, 2 tables, 768 through-holes")
-    print("Ready arm joints [deg]:", manifest["ready_arm_q_deg"])
+    print(f"Built {output}: {model.nq} DOF, two short custom fingers and two GelSight Minis")
 
 
 if __name__ == "__main__":

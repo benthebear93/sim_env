@@ -1,0 +1,39 @@
+<mujoco>
+  <body name="wsg50" pos="0 0 0.105383" quat="0.707106781187 0.707106781187 0 0">
+    <geom name="wsg_body_visual" type="mesh" mesh="wsg_body_mesh" pos="0 -0.049133 0" contype="0" conaffinity="0" group="2" rgba="0.15 0.16 0.18 1" mass="0" />
+    <geom name="wsg_body_collision" type="box" size="0.073 0.03625 0.025" pos="0 -0.049133 0" group="3" mass="0.988882" />
+  </body>
+  <body name="gelsight_wsg_frame" pos="0 0 0.05625" quat="0 1 0 0">
+    <body name="wsg_left_finger" pos="-0.0165 1.76042977377e-18 -0.05025">
+      <joint name="wsg_left_slide" type="slide" axis="-1 0 0" range="0 0.055" damping="5" armature="0.01" />
+      <geom name="wsg_left_carriage" type="box" size=".01 .015 .007" pos="0 0 .007" rgba=".18 .2 .23 1" mass="0.05" />
+      <body name="gelsight_left" pos="0.014375 -1.76042977377e-18 -0.041" quat="6.12323399574e-17 0 0 1">
+        <inertial pos="0.014 0 0.014" mass="0.060000000000000005" diaginertia="2e-05 3e-05 2e-05" />
+        <geom name="gelsight_left_finger" type="mesh" mesh="gs_custom_finger" rgba=".12 .12 .14 1" contype="0" conaffinity="0" group="2" mass="0" />
+        <geom name="gelsight_left_case" type="mesh" mesh="gs_case" rgba=".08 .09 .1 1" contype="0" conaffinity="0" group="2" mass="0" />
+        <geom name="gelsight_left_back_cover" type="mesh" mesh="gs_back_cover" rgba=".14 .15 .16 1" contype="0" conaffinity="0" group="2" mass="0" />
+        <geom name="gelsight_left_finger_collision" type="mesh" mesh="gs_custom_finger" group="3" mass="0" />
+        <geom name="gelsight_left_housing_collision" type="box" pos=".014 0 0" size=".011875 .014 .016002" group="3" mass="0" />
+        <geom name="gelsight_left_gel" type="box" size="0.002125 0.010375 0.012625" rgba=".12 .68 .65 .85" mass="0" />
+        <site name="gelsight_left_surface" pos="-0.002125 0 0" size=".001" group="4" />
+        <site name="wsg_left_inner" pos="-0.002125 0 0" size=".001" group="4" />
+      </body>
+    </body>
+    <body name="wsg_right_finger" pos="0.0165 0 -0.05025">
+      <joint name="wsg_right_slide" type="slide" axis="1 0 0" range="0 0.055" damping="5" armature="0.01" />
+      <geom name="wsg_right_carriage" type="box" size=".01 .015 .007" pos="0 0 .007" rgba=".18 .2 .23 1" mass="0.05" />
+      <body name="gelsight_right" pos="-0.014375 0 -0.041" quat="1 0 0 0">
+        <inertial pos="0.014 0 0.014" mass="0.060000000000000005" diaginertia="2e-05 3e-05 2e-05" />
+        <geom name="gelsight_right_finger" type="mesh" mesh="gs_custom_finger" rgba=".12 .12 .14 1" contype="0" conaffinity="0" group="2" mass="0" />
+        <geom name="gelsight_right_case" type="mesh" mesh="gs_case" rgba=".08 .09 .1 1" contype="0" conaffinity="0" group="2" mass="0" />
+        <geom name="gelsight_right_back_cover" type="mesh" mesh="gs_back_cover" rgba=".14 .15 .16 1" contype="0" conaffinity="0" group="2" mass="0" />
+        <geom name="gelsight_right_finger_collision" type="mesh" mesh="gs_custom_finger" group="3" mass="0" />
+        <geom name="gelsight_right_housing_collision" type="box" pos=".014 0 0" size=".011875 .014 .016002" group="3" mass="0" />
+        <geom name="gelsight_right_gel" type="box" size="0.002125 0.010375 0.012625" rgba=".12 .68 .65 .85" mass="0" />
+        <site name="gelsight_right_surface" pos="-0.002125 0 0" size=".001" group="4" />
+        <site name="wsg_right_inner" pos="-0.002125 0 0" size=".001" group="4" />
+      </body>
+    </body>
+  </body>
+  <site name="tcp" pos="0 1.30118722409e-19 0.1475" size=".004" group="4" />
+</mujoco>

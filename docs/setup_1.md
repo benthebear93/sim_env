@@ -166,6 +166,9 @@ base calibration samples, not the positioning accuracy of the entire assembly.
 | Tactile hardware | Actual asymmetric fingers, GelSight housings, and gel compliance are not included |
 | Contact and control | Friction, damping, and position servo gains are simulation defaults, not identified hardware parameters |
 
+The custom short fingers and dual GelSight Mini sensors are available in
+[Experimental Setup 2](setup_2.md), which retains this setup's robot and table.
+
 The original stock finger meshes are also stored as OBJ files, but the current
 assembly uses the simplified box fingers from the tactile preview. These can
 be replaced when the physical finger CAD is available.

@@ -1,0 +1,19 @@
+<mujoco model="exp3_dual_ur10e_hx5_d20">
+  <compiler angle="radian" autolimits="true" fusestatic="false" />
+  <option timestep="0.002" integrator="implicitfast" cone="elliptic" impratio="10" gravity="0 0 -9.81" />
+  <statistic center="1.2 -0.4 0.35" extent="2.8" />
+  <visual>
+    <global offwidth="1800" offheight="1200" />
+    <headlight ambient="0.4 0.4 0.4" diffuse="0.65 0.65 0.65" specular="0.15 0.15 0.15" />
+    <quality shadowsize="4096" />
+  </visual>
+  <include file="exp3_components/defaults.xml" />
+  <include file="exp3_components/assets.xml" />
+  <include file="exp3_components/tables.xml" />
+  <include file="exp3_components/robots.xml" />
+  <include file="exp3_components/actuators.xml" />
+  <include file="exp3_components/contacts.xml" />
+  <keyframe>
+    <key name="ready" qpos="0.303451341921 -1.27623761686 1.36751721785 -1.66207592779 -1.57079632679 0.303451341921 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.699756766457 -1.27623761686 1.36751721785 -1.66207592779 -1.57079632679 -3.84134942005 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" ctrl="0.303451341921 -1.27623761686 1.36751721785 -1.66207592779 -1.57079632679 0.303451341921 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.699756766457 -1.27623761686 1.36751721785 -1.66207592779 -1.57079632679 -3.84134942005 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" />
+  </keyframe>
+</mujoco>

@@ -1,45 +1,40 @@
 {
   "name": "Experimental Setup 2",
-  "description": "Two adjacent Siegmund tables with a UR10e and matching HX5-D20 hand at each front outer corner.",
+  "description": "Experimental Setup 1 with the short WSG50_GELSIGHT_fin fingers and two GelSight Mini sensors.",
+  "base_config": "configs/bench.json",
   "units": "m, rad, kg, s; fields suffixed deg are degrees",
-  "table_template": "configs/bench.json",
-  "tables": {
-    "left_origin_m": [0.0, 0.0, 0.0],
-    "right_origin_m": [1.2, 0.0, 0.0],
-    "note": "Each table is 1.2 by 0.8 m, touching at x=1.2. Front/lower edge is y=-0.8; +x is right and +y is back."
-  },
-  "robots": {
-    "left": {
-      "base_position_m": [0.175, -0.625, 0.041],
-      "mount_yaw_deg": -90.0,
-      "hand": "left",
-      "flange_target_position_m": [0.95, -0.20, 0.64],
-      "flange_target_rpy_deg": [180.0, 0.0, -90.0],
-      "ik_seed_deg": [-25.0, -100.0, 105.0, -95.0, -90.0, 0.0]
-    },
-    "right": {
-      "base_position_m": [2.225, -0.625, 0.041],
-      "mount_yaw_deg": 90.0,
-      "hand": "right",
-      "flange_target_position_m": [1.45, -0.20, 0.64],
-      "flange_target_rpy_deg": [180.0, 0.0, -90.0],
-      "ik_seed_deg": [25.0, -100.0, 105.0, -95.0, -90.0, 0.0]
-    }
+  "finger_source_to_sensor": {
+    "scale_to_m": 0.001,
+    "rotation_matrix": [[1, 0, 0], [0, 0, -1], [0, 1, 0]],
+    "translation_m": [-0.000125, 0.015, 0.026],
+    "note": "Current short finger pocket registration from diffpatch_ex.mujoco_system.prepare_session_assets; inferred mating, not a measured installation transform."
   },
   "mount": {
-    "spacer_radius_m": 0.10,
-    "adapter_radius_m": 0.045,
-    "adapter_thickness_m": 0.020,
-    "adapter_density_kg_m3": 2700.0,
-    "tool0_wrist3_y_m": 0.11655,
-    "note": "Approximate cylindrical mounts. The Menagerie attachment site is at wrist3 y=0.1; this assembly uses 0.11655 m to align with the UR10e nominal flange and visual face. No hardware-specific mount CAD or extrinsic calibration is available for Exp 2."
+    "carriage_extension_m": 0.014,
+    "finger_mount_point_sensor_m": [0.014375, 0.0, 0.041],
+    "left_sensor_tilt_deg": 0.0,
+    "right_sensor_tilt_deg": 0.0,
+    "note": "Nominal parallel sensors. Retains the source's inferred 14 mm carriage extension; does not import the recording-specific -3 degree sensor tilt."
   },
-  "hand_mount_rpy_deg": [0.0, 0.0, 0.0],
-  "timestep_s": 0.002,
+  "gripper": {
+    "opening_m": 0.05,
+    "reference_opening_m": 0.05,
+    "surface_gap_at_reference_m": 0.05,
+    "note": "Opening is the nominal WSG register (twice slide q). Equal opening and gel gap are an explicit uncalibrated default, adjustable using the reference fields."
+  },
+  "sensor": {
+    "gel_size_m": [0.00425, 0.02075, 0.02525],
+    "finger_mass_kg": 0.025,
+    "sensor_mass_kg": 0.035,
+    "carriage_mass_kg": 0.05,
+    "assembly_com_sensor_m": [0.014, 0.0, 0.014],
+    "assembly_diaginertia_kg_m2": [0.00002, 0.00003, 0.00002],
+    "note": "Masses and inertia are source simulation assumptions. Gel is a rigid contact box; no optical tactile rendering or continuum deformation model."
+  },
   "camera": {
-    "lookat": [1.2, -0.32, 0.30],
-    "distance": 2.85,
-    "azimuth": 90.0,
-    "elevation": -38.0
+    "lookat": [0.53, -0.37, 0.18],
+    "distance": 1.95,
+    "azimuth": 125.0,
+    "elevation": -28.0
   }
 }

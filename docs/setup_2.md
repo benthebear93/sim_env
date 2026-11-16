@@ -1,72 +1,53 @@
 # Experimental Setup 2
 
-Two joined **Siegmund welding tables**, with a **UR10e + ROBOTIS HX5-D20 left
-hand** at the lower-left corner and a **UR10e + HX5-D20 right hand** at the
-lower-right corner. The ready pose places both hands above the central workspace.
+Exp 1's **UR5e, 20 mm flange adapter, WSG-50, and Siegmund welding table** with
+two short **`WSG50_GELSIGHT_fin.stl` fingers and GelSight Mini sensors** from
+`diffpatch_ex`. The robot/table calibration and initial arm pose are unchanged.
 
 ![Experimental Setup 2](images/exp2.png)
 
-## View and rebuild
-
-Use MuJoCo 3.13 or newer; the complete scene, rendering, and tests were validated
-with MuJoCo 3.17.0. The upstream hand actuators cannot load in MuJoCo 3.1.5.
-From the repository root, in an appropriate Python environment:
+![Custom fingers and dual GelSight Mini sensors](images/exp2_tool.png)
 
 ```bash
-python -m pip install -e ".[exp2,test]"
 python scripts/view_scene.py --setup 2
+python scripts/view_scene.py --setup 2 --view tool
 python scripts/view_scene.py --setup 2 --step
 python scripts/build_exp2.py
 python scripts/view_scene.py --setup 2 --render outputs/exp2.png --software
-python -m pytest -q
 ```
 
-The local interpreter used for validation and rendering was
-`/home/haegu/diffpatch_ex/.venv/bin/python`. Scene files do not depend on that path.
-Use `--view top` for the layout or `--view tool` for the hands.
+Edit [`configs/exp2.json`](../configs/exp2.json) for the sensor mounting,
+opening-to-gap reference, assumed masses, and camera. Rebuild Exp 1 first if
+[`configs/bench.json`](../configs/bench.json) changes. The scene is
+[`models/exp2.xml`](../models/exp2.xml); resolved transforms and provenance of
+the base calibration are recorded in
+[`models/exp2_assembly.json`](../models/exp2_assembly.json).
 
-## Layout
+The finger STL is interpreted in millimeters and registered to the sensor
+using the short-pocket transform in `diffpatch_ex.mujoco_system`. The Mini case
+and back cover meshes are already in meters. See the
+[asset documentation](../assets/wsg50_gelsight/README.md) for sources and frames.
 
-All positions below are in meters. World x points right, y points toward the
-back, and z points up. The tabletop is z = 0; the lower/front edge is y = −0.8.
+Both sensors face inward with zero tilt. The 14 mm carriage extension and
+finger mating transform are inherited assembly assumptions; Exp 2 does not
+import recording-specific camera corrections, sensor tilt, or fitted materials.
+The nominal ready opening is 50 mm. Each slide coordinate is half the WSG
+opening; the default also gives a 50 mm gel surface gap. That equality is
+uncalibrated and can be changed using `reference_opening_m` and
+`surface_gap_at_reference_m`. For parallel sensors:
+`surface_gap = opening + surface_gap_at_reference − reference_opening`.
 
-| Component | Position or extent |
-|---|---|
-| Left tabletop | x: 0–1.2, y: −0.8–0 |
-| Right tabletop | x: 1.2–2.4, y: −0.8–0 |
-| Left robot mount origin | [0.175, −0.625, 0.041] |
-| Right robot mount origin | [2.225, −0.625, 0.041] |
-| Left flange, ready pose | [0.95, −0.20, 0.64] |
-| Right flange, ready pose | [1.45, −0.20, 0.64] |
+The scene has eight joints and eight actuators. `gelsight_left_surface` and
+`gelsight_right_surface` mark the inward gel face centers; `tcp` is their nominal
+midpoint, 147.5 mm along tool0 +z. The flange and WSG body are shared with Exp 1.
 
-Each 1.2 × 0.8 m table reuses Exp 1's 35 mm plate, 8 mm hole radius, 50 mm
-hole pitch, and 25 mm edge offsets. The combined surface is 2.4 × 0.8 m with
-768 polygonal through-holes and convex prism collision geometry. The plates
-touch at x = 1.2; the seam marker is visual only.
+Gel dimensions are **4.25 × 20.75 × 25.25 mm**. Gel pads use rigid box geometry
+with standard MuJoCo contact; the housing uses a box proxy and each finger uses
+a convex collision hull. Bracket pockets and bolt holes are visual details in
+this collision approximation. Masses, inertia, and contact parameters are
+simulation assumptions. Optical tactile images and continuum gel deformation
+are not modeled.
 
-![Top view](images/exp2_top.png)
-
-## Assets and installation settings
-
-- [`configs/exp2.json`](../configs/exp2.json): table origins, robot mounts,
-  flange targets, hand orientation, adapters, and camera settings.
-- [`models/exp2.xml`](../models/exp2.xml): portable scene with 52 joints and
-  52 actuators (6 per arm and 20 per hand), plus a `ready` keyframe.
-- [`models/exp2_assembly.json`](../models/exp2_assembly.json): configuration
-  snapshot and solved ready joint angles.
-- [`assets/ur10e/`](../assets/ur10e/README.md) and
-  [`assets/robotis_hx5_d20/`](../assets/robotis_hx5_d20/README.md): retained
-  upstream models, meshes, licenses, and provenance.
-
-Installation poses are **nominal**, not measured Exp 2 calibration. Base
-spacers are visual cylinders; each hand adapter is an approximate cylinder
-with 45 mm radius and 20 mm thickness. The hand base is 20 mm along flange +z.
-The UR10e flange marker uses the nominal wrist-3 y offset of 116.55 mm.
-Mount yaw values (−90° left, +90° right) apply outside the source model's
-90° base rotation. Exp 1's UR5e calibration is not applied here.
-
-Edit the configuration and rebuild to match measured hardware later. If the
-shared table dimensions change, rebuild Exp 1 with `scripts/build_scene.py`
-before rebuilding Exp 2. Validation checks hand assignment, source arm forward
-kinematics, all hole openings, collision clearance, a two-second dynamic hold,
-source hashes, and loading after relocation.
+Validation covers unchanged Exp 1 base/flange transforms, CAD units and mating
+planes, opposing sensor normals, gel gaps over the travel range, sphere contact
+on both gel faces, dynamic opening/closing, source hashes, and relocation.

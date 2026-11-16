@@ -13,7 +13,7 @@ sys.path.insert(0, str(ROOT))
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--setup", type=int, choices=[1, 2], default=1,
+    parser.add_argument("--setup", type=int, choices=[1, 2, 3], default=1,
                         help="Experimental setup to load (default: 1)")
     parser.add_argument("--render", type=Path, help="Save a PNG and exit")
     parser.add_argument("--view", choices=["overview", "tool", "top"], default="overview")
@@ -28,21 +28,21 @@ def main():
         os.environ["EGL_PLATFORM"] = "surfaceless"
     import mujoco
     from sim_env.bench import load_scene
-    scene_path = ROOT / "models" / ("bench.xml" if args.setup == 1 else "exp2.xml")
+    scene_path = ROOT / "models" / ("bench.xml" if args.setup == 1 else f"exp{args.setup}.xml")
     try:
         model, data = load_scene(scene_path)
     except ValueError as error:
-        if args.setup == 2 and "Schema violation" in str(error):
+        if args.setup == 3 and "Schema violation" in str(error):
             raise SystemExit(
-                "Setup 2 includes upstream HX5-D20 actuators requiring newer MuJoCo. "
-                "Use the MuJoCo 3.13+ environment described in docs/setup_2.md.\n"
+                "Setup 3 includes upstream HX5-D20 actuators requiring newer MuJoCo. "
+                "Use the MuJoCo 3.13+ environment described in docs/setup_3.md.\n"
                 + str(error)
             ) from error
         raise
     camera = mujoco.MjvCamera()
     mujoco.mjv_defaultCamera(camera)
-    if args.setup == 2:
-        scene_config = json.loads((ROOT / "configs/exp2.json").read_text())
+    if args.setup == 3:
+        scene_config = json.loads((ROOT / "configs/exp3.json").read_text())
         camera_config = scene_config["camera"]
         camera.lookat[:] = camera_config["lookat"]
         camera.distance = camera_config["distance"]
@@ -55,7 +55,7 @@ def main():
             camera.lookat[:] = 0.5 * (data.site("left_flange").xpos + data.site("right_flange").xpos)
             camera.distance, camera.azimuth, camera.elevation = 1.25, 90, -20
     elif args.view == "tool":
-        camera.lookat[:] = data.site("flange").xpos
+        camera.lookat[:] = data.site("tcp" if args.setup == 2 else "flange").xpos
         camera.distance, camera.azimuth, camera.elevation = 0.55, 140, -18
     elif args.view == "top":
         camera.lookat[:] = [0.6, -0.4, 0]
@@ -63,6 +63,10 @@ def main():
     else:
         camera.lookat[:] = [0.53, -0.37, 0.18]
         camera.distance, camera.azimuth, camera.elevation = 1.95, 125, -28
+        if args.setup == 2:
+            config = json.loads((ROOT / "configs/exp2.json").read_text())["camera"]
+            camera.lookat[:] = config["lookat"]
+            camera.distance, camera.azimuth, camera.elevation = config["distance"], config["azimuth"], config["elevation"]
     options = mujoco.MjvOption()
     options.geomgroup[3] = 0
     options.sitegroup[:] = 0

@@ -1,141 +1,334 @@
 {
   "config": {
     "name": "Experimental Setup 2",
-    "description": "Two adjacent Siegmund tables with a UR10e and matching HX5-D20 hand at each front outer corner.",
+    "description": "Experimental Setup 1 with the short WSG50_GELSIGHT_fin fingers and two GelSight Mini sensors.",
+    "base_config": "configs/bench.json",
     "units": "m, rad, kg, s; fields suffixed deg are degrees",
-    "table_template": "configs/bench.json",
-    "tables": {
-      "left_origin_m": [
-        0.0,
-        0.0,
-        0.0
-      ],
-      "right_origin_m": [
-        1.2,
-        0.0,
-        0.0
-      ],
-      "note": "Each table is 1.2 by 0.8 m, touching at x=1.2. Front/lower edge is y=-0.8; +x is right and +y is back."
-    },
-    "robots": {
-      "left": {
-        "base_position_m": [
-          0.175,
-          -0.625,
-          0.041
+    "finger_source_to_sensor": {
+      "scale_to_m": 0.001,
+      "rotation_matrix": [
+        [
+          1,
+          0,
+          0
         ],
-        "mount_yaw_deg": -90.0,
-        "hand": "left",
-        "flange_target_position_m": [
-          0.95,
-          -0.2,
-          0.64
+        [
+          0,
+          0,
+          -1
         ],
-        "flange_target_rpy_deg": [
-          180.0,
-          0.0,
-          -90.0
-        ],
-        "ik_seed_deg": [
-          -25.0,
-          -100.0,
-          105.0,
-          -95.0,
-          -90.0,
-          0.0
+        [
+          0,
+          1,
+          0
         ]
-      },
-      "right": {
-        "base_position_m": [
-          2.225,
-          -0.625,
-          0.041
-        ],
-        "mount_yaw_deg": 90.0,
-        "hand": "right",
-        "flange_target_position_m": [
-          1.45,
-          -0.2,
-          0.64
-        ],
-        "flange_target_rpy_deg": [
-          180.0,
-          0.0,
-          -90.0
-        ],
-        "ik_seed_deg": [
-          25.0,
-          -100.0,
-          105.0,
-          -95.0,
-          -90.0,
-          0.0
-        ]
-      }
+      ],
+      "translation_m": [
+        -0.000125,
+        0.015,
+        0.026
+      ],
+      "note": "Current short finger pocket registration from diffpatch_ex.mujoco_system.prepare_session_assets; inferred mating, not a measured installation transform."
     },
     "mount": {
-      "spacer_radius_m": 0.1,
-      "adapter_radius_m": 0.045,
-      "adapter_thickness_m": 0.02,
-      "adapter_density_kg_m3": 2700.0,
-      "tool0_wrist3_y_m": 0.11655,
-      "note": "Approximate cylindrical mounts. The Menagerie attachment site is at wrist3 y=0.1; this assembly uses 0.11655 m to align with the UR10e nominal flange and visual face. No hardware-specific mount CAD or extrinsic calibration is available for Exp 2."
+      "carriage_extension_m": 0.014,
+      "finger_mount_point_sensor_m": [
+        0.014375,
+        0.0,
+        0.041
+      ],
+      "left_sensor_tilt_deg": 0.0,
+      "right_sensor_tilt_deg": 0.0,
+      "note": "Nominal parallel sensors. Retains the source's inferred 14 mm carriage extension; does not import the recording-specific -3 degree sensor tilt."
     },
-    "hand_mount_rpy_deg": [
-      0.0,
-      0.0,
-      0.0
-    ],
-    "timestep_s": 0.002,
+    "gripper": {
+      "opening_m": 0.05,
+      "reference_opening_m": 0.05,
+      "surface_gap_at_reference_m": 0.05,
+      "note": "Opening is the nominal WSG register (twice slide q). Equal opening and gel gap are an explicit uncalibrated default, adjustable using the reference fields."
+    },
+    "sensor": {
+      "gel_size_m": [
+        0.00425,
+        0.02075,
+        0.02525
+      ],
+      "finger_mass_kg": 0.025,
+      "sensor_mass_kg": 0.035,
+      "carriage_mass_kg": 0.05,
+      "assembly_com_sensor_m": [
+        0.014,
+        0.0,
+        0.014
+      ],
+      "assembly_diaginertia_kg_m2": [
+        2e-05,
+        3e-05,
+        2e-05
+      ],
+      "note": "Masses and inertia are source simulation assumptions. Gel is a rigid contact box; no optical tactile rendering or continuum deformation model."
+    },
     "camera": {
       "lookat": [
-        1.2,
-        -0.32,
-        0.3
+        0.53,
+        -0.37,
+        0.18
       ],
-      "distance": 2.85,
-      "azimuth": 90.0,
-      "elevation": -38.0
+      "distance": 1.95,
+      "azimuth": 125.0,
+      "elevation": -28.0
     }
   },
-  "ready_arm_q_rad": {
-    "left": [
-      0.3034513419210859,
-      -1.2762376168553986,
-      1.3675172178533175,
-      -1.6620759277928154,
-      -1.5707963267948963,
-      0.3034513419210856
-    ],
-    "right": [
-      -0.6997567664571549,
-      -1.2762376168553977,
-      1.3675172178533161,
-      -1.662075927792815,
-      -1.5707963267948966,
-      -3.8413494200469485
-    ]
+  "base_config": {
+    "schema_version": 1,
+    "units": "m, rad, kg, s; explicitly suffixed fields use deg or mm",
+    "calibration_file": "calibration/ur5e_base_calibration.json",
+    "table": {
+      "min_xy_m": [
+        0.0,
+        -0.8
+      ],
+      "max_xy_m": [
+        1.2,
+        0.0
+      ],
+      "top_z_m": 0.0,
+      "thickness_m": 0.035,
+      "hole_spacing_m": 0.05,
+      "hole_edge_offset_m": 0.025,
+      "hole_radius_m": 0.008,
+      "hole_segments": 32,
+      "hole_type": "through",
+      "note": "Radius and spacing adopted from the existing viewer, per user instruction. No threads."
+    },
+    "robot": {
+      "world_origin_in_calibration_xy_mm": [
+        0.0,
+        0.0
+      ],
+      "ur_base_above_table_m": 0.041,
+      "model_to_ur_base_yaw_deg": 180.0,
+      "fit_model_translation": true,
+      "reference_q_deg": [
+        -35.56,
+        -101.41,
+        -71.46,
+        -88.19,
+        88.47,
+        -169.95
+      ],
+      "reference_tool0_ur_base_mm": [
+        390.832624,
+        -452.030807,
+        551.174581
+      ],
+      "initial_q_deg": [
+        -3.83,
+        -108.92,
+        -98.15,
+        -61.33,
+        90.44,
+        -137.63
+      ],
+      "mount_spacer_radius_m": 0.075,
+      "note": "Base height and reference sample match tactile pick_runtime.py. Spacer radius is a visual approximation. URDF kinematics are nominal, not factory calibrated."
+    },
+    "flange_adapter": {
+      "radius_m": 0.032,
+      "thickness_m": 0.02,
+      "density_kg_m3": 2700.0,
+      "note": "Cylinder dimensions match the tactile preview; density is an aluminum assumption. Bolt holes/CAD are not supplied. Attached to UR tool0, not the differently oriented ROS flange frame."
+    },
+    "gripper": {
+      "body_mass_kg": 0.988882,
+      "body_size_sdf_m": [
+        0.146,
+        0.0725,
+        0.05
+      ],
+      "body_link_y_m": -0.049133,
+      "finger_size_tool0_m": [
+        0.012,
+        0.02,
+        0.07
+      ],
+      "finger_mass_kg": 0.05,
+      "opening_m": 0.05,
+      "maximum_opening_m": 0.11,
+      "tcp_from_tool0_m": [
+        0.0,
+        0.0,
+        0.145
+      ],
+      "note": "WSG 050-110 body mesh; symmetric box fingers match preview dimensions. Actual asymmetric tactile fingers/GelSight geometry and contact properties are not identified. Joint coordinates are half the inner jaw gap."
+    },
+    "simulation": {
+      "timestep_s": 0.002,
+      "friction": [
+        0.8,
+        0.005,
+        0.0001
+      ],
+      "note": "Position servos, damping and friction are simulation defaults, not identified hardware parameters."
+    }
   },
-  "ready_arm_q_deg": {
-    "left": [
-      17.386481179659494,
-      -73.12302910164856,
-      78.35296499446744,
-      -95.22993589281889,
-      -89.99999999999999,
-      17.386481179659473
+  "finger_source_to_sensor": [
+    [
+      0.001,
+      0.0,
+      0.0,
+      -0.000125
     ],
-    "right": [
-      -40.09310940371659,
-      -73.1230291016485,
-      78.35296499446737,
-      -95.22993589281886,
-      -90.0,
-      -220.09310940371662
+    [
+      0.0,
+      0.0,
+      -0.001,
+      0.015
+    ],
+    [
+      0.0,
+      0.001,
+      0.0,
+      0.026
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
     ]
+  ],
+  "finger_bounds_sensor_m": [
+    [
+      -0.000125,
+      -0.015,
+      -0.02
+    ],
+    [
+      0.028875,
+      0.015,
+      0.040999999999999995
+    ]
+  ],
+  "mounts": {
+    "left": {
+      "jaw_position_wsg_m": [
+        -0.0165,
+        1.76042977377432e-18,
+        -0.050249999999999996
+      ],
+      "sensor_position_jaw_m": [
+        0.014375,
+        -1.76042977377432e-18,
+        -0.041
+      ],
+      "sensor_rotation_jaw": [
+        [
+          -1.0,
+          -1.2246467991473532e-16,
+          0.0
+        ],
+        [
+          1.2246467991473532e-16,
+          -1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "right": {
+      "jaw_position_wsg_m": [
+        0.0165,
+        0.0,
+        -0.050249999999999996
+      ],
+      "sensor_position_jaw_m": [
+        -0.014375,
+        0.0,
+        -0.041
+      ],
+      "sensor_rotation_jaw": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
   },
-  "nq": 52,
-  "nu": 52,
-  "total_through_holes": 768,
-  "installation_status": "Nominal layout; no measured Exp 2 base calibration applied"
+  "tcp_tool0_m": [
+    0.0,
+    1.3011872240940628e-19,
+    0.1475
+  ],
+  "table_from_ur_base": [
+    [
+      0.707507682789,
+      -0.706704342567,
+      0.001360511677,
+      0.124614895080587
+    ],
+    [
+      0.706705549046,
+      0.707505228515,
+      -0.001902254499,
+      -0.375523055764868
+    ],
+    [
+      0.00038176239,
+      0.002307340825,
+      0.999997265214,
+      0.041
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "ur_base_from_urdf_model": [
+    [
+      -1.0,
+      -1.2246467991473532e-16,
+      0.0,
+      -0.00779516260326768
+    ],
+    [
+      1.2246467991473532e-16,
+      -1.0,
+      0.0,
+      6.539714992076506e-05
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.006255282156026443
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "nq": 8,
+  "nu": 8,
+  "calibration_status": "Exp 1 robot/table calibration; nominal GelSight mounting and opening zero",
+  "contact_model": "Rigid gel boxes; housing boxes; convex hulls of custom fingers; no optical or continuum gel model"
 }

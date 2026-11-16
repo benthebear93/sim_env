@@ -1,19 +1,26 @@
-<mujoco model="exp2_dual_ur10e_hx5_d20">
-  <compiler angle="radian" autolimits="true" fusestatic="false" />
-  <option timestep="0.002" integrator="implicitfast" cone="elliptic" impratio="10" gravity="0 0 -9.81" />
-  <statistic center="1.2 -0.4 0.35" extent="2.8" />
+<mujoco model="exp2_ur5e_wsg50_dual_gelsight">
+  <compiler angle="radian" autolimits="true" inertiafromgeom="auto" fusestatic="false" />
+  <option timestep="0.002" integrator="implicitfast" gravity="0 0 -9.81" />
+  <size njmax="2000" nconmax="2000" />
+  <default>
+    <geom friction="0.8 0.005 0.0001" condim="3" />
+  </default>
   <visual>
-    <global offwidth="1800" offheight="1200" />
-    <headlight ambient="0.4 0.4 0.4" diffuse="0.65 0.65 0.65" specular="0.15 0.15 0.15" />
-    <quality shadowsize="4096" />
+    <global offwidth="1600" offheight="1200" />
+    <headlight ambient="0.35 0.35 0.35" diffuse="0.6 0.6 0.6" specular="0.2 0.2 0.2" />
+    <quality shadowsize="2048" />
   </visual>
-  <include file="exp2_components/defaults.xml" />
-  <include file="exp2_components/assets.xml" />
-  <include file="exp2_components/tables.xml" />
-  <include file="exp2_components/robots.xml" />
-  <include file="exp2_components/actuators.xml" />
-  <include file="exp2_components/contacts.xml" />
+  <worldbody>
+    <light pos="0.4 -0.4 2" dir="0 0 -1" diffuse="0.7 0.7 0.7" castshadow="true" />
+    <geom name="robot_mount_spacer" type="cylinder" size="0.075 0.0236262200214" pos="0.119062051585 -0.380997570745 0.0236262200214" rgba="0.18 0.19 0.21 1" contype="0" conaffinity="0" group="2" />
+  </worldbody>
   <keyframe>
-    <key name="ready" qpos="0.303451341921 -1.27623761686 1.36751721785 -1.66207592779 -1.57079632679 0.303451341921 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.699756766457 -1.27623761686 1.36751721785 -1.66207592779 -1.57079632679 -3.84134942005 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" ctrl="0.303451341921 -1.27623761686 1.36751721785 -1.66207592779 -1.57079632679 0.303451341921 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.699756766457 -1.27623761686 1.36751721785 -1.66207592779 -1.57079632679 -3.84134942005 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" />
+    <key name="ready" qpos="-0.0668461103514 -1.90101262127 -1.71304066083 -1.07041043025 1.5784757755 -2.40209664952 0.025 0.025" ctrl="-0.0668461103514 -1.90101262127 -1.71304066083 -1.07041043025 1.5784757755 -2.40209664952 0.025 0.025" />
   </keyframe>
+  <include file="components/assets.xml" />
+  <include file="components/table.xml" />
+  <include file="exp2_components/robot.xml" />
+  <include file="components/actuators.xml" />
+  <include file="components/contacts.xml" />
+  <include file="exp2_components/assets.xml" />
 </mujoco>

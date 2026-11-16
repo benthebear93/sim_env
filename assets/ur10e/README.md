@@ -10,7 +10,7 @@ and six position actuators, with geometry in meters and angles in radians.
 The source base body has a 90° rotation about z. Visual geoms use group 2;
 collision geoms use group 3.
 
-Exp 2 imports this model twice, prefixes identifiers with `left_` and `right_`,
+Exp 3 imports this model twice, prefixes identifiers with `left_` and `right_`,
 and adds installation transforms and hand adapters in generated MJCF. Source
 files remain unchanged. The assembly moves `attachment_site` from wrist-3
 local y = 0.100 m to 0.11655 m, placing the hand adapter at the nominal flange
@@ -18,6 +18,6 @@ face. That offset comes from the retained Universal Robots
 [`default_kinematics.yaml`](reference/default_kinematics.yaml), whose
 [license](reference/LICENSE) is included. It is not measured calibration.
 
-Edit [`configs/exp2.json`](../../configs/exp2.json) to change installation poses,
-adapter geometry, or the flange offset, then run `python scripts/build_exp2.py`.
-See [Setup 2](../../docs/setup_2.md) for the assembled scene and environment.
+Edit [`configs/exp3.json`](../../configs/exp3.json) to change installation poses,
+adapter geometry, or the flange offset, then run `python scripts/build_exp3.py`.
+See [Setup 3](../../docs/setup_3.md) for the assembled scene and environment.

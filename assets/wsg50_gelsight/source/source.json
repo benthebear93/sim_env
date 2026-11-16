@@ -1,0 +1,30 @@
+{
+  "gelsight_repository": "https://github.com/gelsightinc/gsrobotics",
+  "gelsight_cad": "https://github.com/gelsightinc/gsrobotics/tree/main/docs/CAD",
+  "datasheet": "https://www.gelsight.com/wp-content/uploads/productsheet/Mini/GS_Mini_4.3.24.pdf",
+  "wsg_specs": "https://weiss-robotics.com/en/servo-electric/wsg-series/",
+  "wsg_mesh_source": "/home/haegu/post_grasp_tactile_manipulation/assets/wsg50_110",
+  "wsg_mesh_description": "Drake model based on Schunk product drawing, with original license retained.",
+  "gel_dimension_correction": "The local hardware image-mapping setting 20.75 x 30.5 mm differs from the Mini drawing. This fixture uses drawing face dimensions 20.75 x 25.25 mm, not camera FOV 14.3 x 18.6 mm.",
+  "tessellation": "CadQuery 2.8.0 / OpenCascade 7.9.3.1.1; imported STEP units converted to mm. Shell STL tolerance 0.05 mm; adapter 0.0001 mm; angular tolerance 0.15 rad. Original STEP retained.",
+  "calibration_status": "Geometry-based preliminary fixture; no identified gel material or WSG controller.",
+  "sha256": {
+    "gsmini_shell_1.stl": "990943b56ab23e21aab27cf31b60c69fcc109636418105e82ca26c058780f76f",
+    "case.obj": "f6e278b90a8576886623781c254a04e4b8108e20a28657d798dead5109559119",
+    "back_cover.obj": "cc8a40543fa84b619357f409fdf23a146c5207318da8205ec37534baf7dbb7f5",
+    "adapter.obj": "4b34e328e2a7b1c56b7d04f049840b372936e87ccdcd77918b4dc12690d64877",
+    "wsg_body.gltf": "96ca9aa4503e077fcc74d415e7d71be51b7ade87611b9ad5ec9c892d4e627d66",
+    "geometry.json": "864dbe30d61e7982d6204466cacc3112c3ff01a801b0bff395cfa860aa9601c2",
+    "WSG_LICENSE": "9873a83dddefdf6d63f1c713a81eab1a5d3a3dd53cb9958de997cf9d254effa5",
+    "schunk_adapter_gsmini_0.stl": "1fa4cb1fcf56699697fbfe766af3783da6201e3aaa2daf5e4165a2e264a1237c",
+    "wsg_body.bin": "fece9a6db696f8f1d7cd3c936c57ac3c3641494eb4537d1dc3fa3999f530cf37",
+    "GELSIGHT_REPOSITORY_LICENSE": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "gsmini_shell_0.stl": "f2f343fbf00bb38b4e8820446b158816a2e9b14518efb75068d73a507c9e021a",
+    "source/schunk_adapter_gsmini.stp": "aea70350f5f3a61941c96e318a516c9b5d0235ca38a517f783b6bda416abf4c0",
+    "source/gelsight_mini_datasheet.pdf": "4fa0d7fe96887cccb769060807f89505429bf98c9c59c428e44f760703d56aa7",
+    "source/gsmini_shell.zip": "6cd0af344e7fb4a30dd05d5149e57e607ce1ab0a4ce5fc88d2722ca636978a8a",
+    "source/schunk_adapter.jpg": "87757e04ce759ad38e60844aa79ecd3b101ec4cfbde503fbc4b91671d74ad455",
+    "source/schunk_adapter_gsmini.zip": "39051d748a083b9e048f12011f0e7784a84f5b3b16a51a45a9575b13ee035840",
+    "source/gsmini_shell.stp": "ed01357ae11417c12b422193eb130b790e0a0e6c90e7f5dbbd5b1043c8e7b080"
+  }
+}
