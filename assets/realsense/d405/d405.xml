@@ -1,0 +1,8 @@
+<mujoco model="realsense_d405">
+  <!--Generated from the pinned RealSense URDF: nominal extrinsics, no plug. Inertia is a uniform-box approximation.-->
+  <compiler angle="radian" autolimits="true" fusestatic="false" />
+  <include file="assets.xml" />
+  <worldbody>
+    <include file="body.xml" />
+  </worldbody>
+</mujoco>

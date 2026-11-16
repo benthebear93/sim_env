@@ -11,11 +11,12 @@ import xml.etree.ElementTree as ET
 
 import numpy as np
 from scipy.spatial.transform import Rotation
+from scipy.spatial import ConvexHull
 import trimesh
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from sim_env.bench import JOINT_NAMES, load_scene
+from sim_env.bench import load_scene
 
 
 def numbers(values):
@@ -36,12 +37,13 @@ def save_xml(root, path):
 
 
 def sensor_mount(config, sign, side, half_body_depth):
-    """Source sensor frame: +x outward, +z toward the WSG, gel center at zero."""
+    """Sensor frame: +x outward, +z toward the WSG; gap refers to gel apexes."""
     mount, grip, sensor = config["mount"], config["gripper"], config["sensor"]
     rotation = (Rotation.from_euler("z", 0 if sign == 1 else 180, degrees=True).as_matrix()
                 @ Rotation.from_euler("y", mount[f"{side}_sensor_tilt_deg"], degrees=True).as_matrix())
     mount_point = np.array(mount["finger_mount_point_sensor_m"])
-    center = np.array([sign * (grip["surface_gap_at_reference_m"]/2 + sensor["gel_size_m"][0]/2),
+    apex_x = sensor["gel_geometry"]["apex_sensor_m"][0]
+    center = np.array([sign * (grip["surface_gap_at_reference_m"]/2 - apex_x),
                        0, -(half_body_depth + mount["carriage_extension_m"] + mount_point[2])])
     jaw = center + rotation @ mount_point - [sign*grip["reference_opening_m"]/2, 0, 0]
     return rotation, jaw, -rotation @ mount_point
@@ -58,7 +60,23 @@ def prepare_meshes(config):
     mesh.apply_transform(matrix)
     (directory / "meshes").mkdir(exist_ok=True)
     mesh.export(directory / "meshes/custom_finger.obj")
-    return matrix, mesh.bounds.tolist()
+    gel_config = config["sensor"]["gel_geometry"]
+    gel = trimesh.load_mesh(ROOT / gel_config["source_stl"])
+    rotation = np.array(gel_config["source_to_sensor_rotation"])
+    np.testing.assert_allclose(rotation.T @ rotation, np.eye(3), atol=1e-12)
+    if not np.isclose(np.linalg.det(rotation), 1):
+        raise ValueError("Gel registration must be a proper rotation.")
+    gel.vertices = (gel.vertices @ rotation.T + gel_config["source_to_sensor_translation_mm"]) * gel_config["scale_to_m"]
+    np.testing.assert_allclose(gel.bounds, gel_config["bounds_sensor_m"], atol=2e-9)
+    if not gel.is_watertight or not gel.is_winding_consistent or gel.volume <= 0:
+        raise ValueError("Curved gel must be a closed, consistently oriented solid.")
+    gel.export(directory / "meshes/gel_curved_sensor_m.obj")
+    hull = ConvexHull(gel.vertices)
+    gel_report = dict(source=gel_config["source_stl"], bounds_sensor_m=gel.bounds.tolist(),
+                      vertices=len(gel.vertices), triangles=len(gel.faces), watertight=bool(gel.is_watertight),
+                      volume_m3=float(gel.volume), convex_hull_volume_m3=float(hull.volume),
+                      convex_hull_relative_volume_excess=float(hull.volume/gel.volume-1))
+    return matrix, mesh.bounds.tolist(), gel_report
 
 
 def build(config_path=None):
@@ -71,7 +89,7 @@ def build(config_path=None):
     maximum = base["gripper"]["maximum_opening_m"]
     if not 0 <= grip["opening_m"] <= maximum:
         raise ValueError("Initial WSG opening exceeds travel limits.")
-    registration, finger_bounds = prepare_meshes(config)
+    registration, finger_bounds, gel_report = prepare_meshes(config)
     components = ROOT / "models/exp2_components"
 
     root = ET.parse(ROOT / "models/bench.xml").getroot()
@@ -90,8 +108,11 @@ def build(config_path=None):
     assets = ET.Element("mujoco")
     asset = ET.SubElement(assets, "asset")
     for name, relative in [("gs_custom_finger", "meshes/custom_finger.obj"),
-                           ("gs_case", "source/case.obj"), ("gs_back_cover", "source/back_cover.obj")]:
+                           ("gs_case", "source/case.obj"), ("gs_back_cover", "source/back_cover.obj"),
+                           ("gs_curved_gel", "meshes/gel_curved_sensor_m.obj")]:
         ET.SubElement(asset, "mesh", name=name, file="../assets/wsg50_gelsight/" + relative)
+    ET.SubElement(asset, "material", name="gs_gel_material", rgba=".12 .68 .65 1",
+                  specular=".6", shininess=".5")
     save_xml(assets, components / "assets.xml")
 
     gripper = ET.Element("mujoco")
@@ -128,9 +149,9 @@ def build(config_path=None):
                       mesh="gs_custom_finger", group="3", mass="0")
         ET.SubElement(body, "geom", name=f"gelsight_{side}_housing_collision", type="box",
                       pos=".014 0 0", size=".011875 .014 .016002", group="3", mass="0")
-        ET.SubElement(body, "geom", name=f"gelsight_{side}_gel", type="box",
-                      size=numbers(np.array(sensor["gel_size_m"])/2), rgba=".12 .68 .65 .85", mass="0")
-        surface = [-sensor["gel_size_m"][0]/2, 0, 0]
+        ET.SubElement(body, "geom", name=f"gelsight_{side}_gel", type="mesh",
+                      mesh="gs_curved_gel", material="gs_gel_material", mass="0")
+        surface = sensor["gel_geometry"]["apex_sensor_m"]
         for name in [f"gelsight_{side}_surface", f"wsg_{side}_inner"]:
             ET.SubElement(body, "site", name=name, pos=numbers(surface), size=".001", group="4")
         surface_centers.append(jaw_position + [sign*grip["opening_m"]/2, 0, 0]
@@ -153,12 +174,13 @@ def build(config_path=None):
     if penetrations:
         raise RuntimeError(f"Initial assembly has penetrating contacts: {penetrations[:10]}")
     manifest = dict(config=config, base_config=base, finger_source_to_sensor=registration.tolist(),
-                    finger_bounds_sensor_m=finger_bounds, mounts=mount_frames, tcp_tool0_m=tcp.tolist(),
+                    finger_bounds_sensor_m=finger_bounds, curved_gel=gel_report,
+                    mounts=mount_frames, tcp_tool0_m=tcp.tolist(),
                     table_from_ur_base=base_assembly["table_from_ur_base"],
                     ur_base_from_urdf_model=base_assembly["ur_base_from_urdf_model"],
                     nq=model.nq, nu=model.nu,
                     calibration_status="Exp 1 robot/table calibration; nominal GelSight mounting and opening zero",
-                    contact_model="Rigid gel boxes; housing boxes; convex hulls of custom fingers; no optical or continuum gel model")
+                    contact_model="Curved CAD gel meshes with convex-hull collision; housing boxes; convex hulls of custom fingers; no optical or continuum gel model")
     (ROOT / "models/exp2_assembly.json").write_text(json.dumps(manifest, indent=2) + "\n")
     print(f"Built {output}: {model.nq} DOF, two short custom fingers and two GelSight Minis")
 

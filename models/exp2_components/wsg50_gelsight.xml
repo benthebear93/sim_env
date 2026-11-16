@@ -14,9 +14,9 @@
         <geom name="gelsight_left_back_cover" type="mesh" mesh="gs_back_cover" rgba=".14 .15 .16 1" contype="0" conaffinity="0" group="2" mass="0" />
         <geom name="gelsight_left_finger_collision" type="mesh" mesh="gs_custom_finger" group="3" mass="0" />
         <geom name="gelsight_left_housing_collision" type="box" pos=".014 0 0" size=".011875 .014 .016002" group="3" mass="0" />
-        <geom name="gelsight_left_gel" type="box" size="0.002125 0.010375 0.012625" rgba=".12 .68 .65 .85" mass="0" />
-        <site name="gelsight_left_surface" pos="-0.002125 0 0" size=".001" group="4" />
-        <site name="wsg_left_inner" pos="-0.002125 0 0" size=".001" group="4" />
+        <geom name="gelsight_left_gel" type="mesh" mesh="gs_curved_gel" material="gs_gel_material" mass="0" />
+        <site name="gelsight_left_surface" pos="-0.001875 0 0" size=".001" group="4" />
+        <site name="wsg_left_inner" pos="-0.001875 0 0" size=".001" group="4" />
       </body>
     </body>
     <body name="wsg_right_finger" pos="0.0165 0 -0.05025">
@@ -29,11 +29,11 @@
         <geom name="gelsight_right_back_cover" type="mesh" mesh="gs_back_cover" rgba=".14 .15 .16 1" contype="0" conaffinity="0" group="2" mass="0" />
         <geom name="gelsight_right_finger_collision" type="mesh" mesh="gs_custom_finger" group="3" mass="0" />
         <geom name="gelsight_right_housing_collision" type="box" pos=".014 0 0" size=".011875 .014 .016002" group="3" mass="0" />
-        <geom name="gelsight_right_gel" type="box" size="0.002125 0.010375 0.012625" rgba=".12 .68 .65 .85" mass="0" />
-        <site name="gelsight_right_surface" pos="-0.002125 0 0" size=".001" group="4" />
-        <site name="wsg_right_inner" pos="-0.002125 0 0" size=".001" group="4" />
+        <geom name="gelsight_right_gel" type="mesh" mesh="gs_curved_gel" material="gs_gel_material" mass="0" />
+        <site name="gelsight_right_surface" pos="-0.001875 0 0" size=".001" group="4" />
+        <site name="wsg_right_inner" pos="-0.001875 0 0" size=".001" group="4" />
       </body>
     </body>
   </body>
-  <site name="tcp" pos="0 1.30118722409e-19 0.1475" size=".004" group="4" />
+  <site name="tcp" pos="0 1.1481063742e-19 0.1475" size=".004" group="4" />
 </mujoco>

@@ -3,5 +3,7 @@
     <mesh name="gs_custom_finger" file="../assets/wsg50_gelsight/meshes/custom_finger.obj" />
     <mesh name="gs_case" file="../assets/wsg50_gelsight/source/case.obj" />
     <mesh name="gs_back_cover" file="../assets/wsg50_gelsight/source/back_cover.obj" />
+    <mesh name="gs_curved_gel" file="../assets/wsg50_gelsight/meshes/gel_curved_sensor_m.obj" />
+    <material name="gs_gel_material" rgba=".12 .68 .65 1" specular=".6" shininess=".5" />
   </asset>
 </mujoco>

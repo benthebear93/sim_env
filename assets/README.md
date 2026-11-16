@@ -18,6 +18,9 @@ builder resolves by filename into the vendored `ur5e/source/meshes/` tree.
 - HX5-D20 inputs: official ROBOTIS HX5-D20 rev2 left/right MJCF, Xacro macros,
   and STL meshes in [`robotis_hx5_d20/`](robotis_hx5_d20/README.md).
   The upstream Apache-2.0 license, pinned commit, and per-file hashes are retained.
+- RealSense D455 and D405: official STL/Xacro assets and generated standalone
+  MuJoCo models in [`realsense/`](realsense/README.md), with screw-mount and
+  nominal optical frames, pinned source commit, licenses, and per-file hashes.
 - Calibration: the tactile repository's JSON copied without changes.
 - Table/adapter/finger dimensions and frame conventions: existing
   `preview_pick_test_tube_1_motion.py`, `pick_runtime.py`, and repair
@@ -34,7 +37,8 @@ Table visual meshes contain real polygonal through-holes. Collision meshes
 are individual convex prisms, not a convex hull of the whole perforated slab.
 Flange adapter and simplified fingers are MJCF primitives, not missing meshes.
 Exp 2 replaces the simplified fingers with the custom finger CAD and two
-GelSight Mini housings; its gel surfaces are rigid contact boxes.
+GelSight Mini housings. The gel uses the registered FEATS curved CAD mesh
+for visualization and its convex hull for MuJoCo contact.
 
 Do not edit source assets to tune installation. For the Experimental Setup 1
 bench, change `configs/bench.json`, then regenerate. HX5-D20 models are separate,

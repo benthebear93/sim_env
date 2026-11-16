@@ -49,9 +49,79 @@ def test_opposing_gel_faces_and_opening(scene, opening):
     left_normal = -left.xmat.reshape(3, 3)[:, 0]
     right_normal = -right.xmat.reshape(3, 3)[:, 0]
     np.testing.assert_allclose(left_normal, -right_normal, atol=1e-12)
-    np.testing.assert_allclose(right.xpos-left.xpos, opening*left_normal, atol=1e-12)
+    # Housing mounts are unchanged: the curved CAD apex is 0.25 mm farther
+    # back on each side than the former flat pad face.
+    np.testing.assert_allclose(right.xpos-left.xpos, (opening+.0005)*left_normal, atol=1e-12)
     np.testing.assert_allclose(data.site("tcp").xpos, (left.xpos+right.xpos)/2, atol=1e-12)
     assert not any(c.dist < -1e-5 for c in data.contact)
+
+
+def cad_front_x(mesh, y, z):
+    """Intersect the original triangles along x, without using a convex hull."""
+    triangles = mesh.triangles
+    origin = triangles[:, 0, 1:]
+    a, b = triangles[:, 1, 1:] - origin, triangles[:, 2, 1:] - origin
+    d = np.array([y, z]) - origin
+    determinant = a[:, 0]*b[:, 1] - a[:, 1]*b[:, 0]
+    valid = np.abs(determinant) > 1e-18
+    u = np.divide(d[:, 0]*b[:, 1]-d[:, 1]*b[:, 0], determinant,
+                  out=np.full_like(determinant, np.nan), where=valid)
+    v = np.divide(a[:, 0]*d[:, 1]-a[:, 1]*d[:, 0], determinant,
+                  out=np.full_like(determinant, np.nan), where=valid)
+    inside = valid & (u >= -1e-9) & (v >= -1e-9) & (u+v <= 1+1e-9)
+    x = triangles[:, 0, 0] + u*(triangles[:, 1, 0]-triangles[:, 0, 0]) + v*(triangles[:, 2, 0]-triangles[:, 0, 0])
+    return float(x[inside].min())
+
+
+def test_curved_cad_registration_and_housing_alignment(scene):
+    mesh = trimesh.load_mesh(ROOT / "assets/wsg50_gelsight/meshes/gel_curved_sensor_m.obj")
+    reference = trimesh.load_mesh(ROOT / "assets/wsg50_gelsight/source/curved/gel_curved_sensor_m.obj")
+    np.testing.assert_allclose(mesh.vertices, reference.vertices, atol=1e-8)
+    assert mesh.is_watertight and mesh.is_winding_consistent
+    np.testing.assert_allclose(mesh.bounds, [[-.001875, -.010375, -.012625], [.002125, .010375, .012625]], atol=2e-9)
+    case = trimesh.load_mesh(ROOT / "assets/wsg50_gelsight/source/case.obj")
+    assert abs(mesh.bounds[1, 0]-case.bounds[0, 0]) < 1e-9
+    assert cad_front_x(mesh, .008, 0)-cad_front_x(mesh, 0, 0) > .00025
+    assert cad_front_x(mesh, 0, .01)-cad_front_x(mesh, 0, 0) > .00025
+    model, data = scene
+    for side in ("left", "right"):
+        geom = model.geom(f"gelsight_{side}_gel")
+        assert geom.type[0] == mujoco.mjtGeom.mjGEOM_MESH
+        assert geom.dataid[0] == model.mesh("gs_curved_gel").id
+        # The sensor's back remains 29.25 mm from the central plane at ready.
+        center = data.body(f"gelsight_{side}").xpos
+        assert abs(np.linalg.norm(center-data.site("tcp").xpos)-.027125) < 1e-12
+
+
+def test_native_contact_tracks_curved_front():
+    path = ROOT / "assets/wsg50_gelsight/meshes/gel_curved_sensor_m.obj"
+    mesh = trimesh.load_mesh(path)
+    # A 50 micrometer sphere locates the compiled MuJoCo contact surface.
+    # This also detects accidental replacement by a flat box or flat hull.
+    radius = .00005
+    xml = f'''<mujoco><asset><mesh name="gel" file="{path}"/></asset>
+      <worldbody><geom name="gel" type="mesh" mesh="gel"/>
+      <body><freejoint name="probe"/><geom name="sphere" type="sphere" size="{radius}" mass=".001"/></body>
+      </worldbody></mujoco>'''
+    model = mujoco.MjModel.from_xml_string(xml)
+    data = mujoco.MjData(model)
+    positions = [(0, 0), (.008, 0), (-.008, 0), (0, .01), (0, -.01), (.008, .01)]
+    measured = []
+    for y, z in positions:
+        front = cad_front_x(mesh, y, z)
+        lo, hi = front-2*radius, front+radius
+        for _ in range(22):
+            x = (lo+hi)/2
+            data.joint("probe").qpos[:] = [x, y, z, 1, 0, 0, 0]
+            mujoco.mj_forward(model, data)
+            if any(c.dist < 0 for c in data.contact):
+                hi = x
+            else:
+                lo = x
+        measured.append((lo+hi)/2+radius)
+        assert abs(measured[-1]-front) < .00002
+    assert measured[1]-measured[0] > .00025
+    assert measured[3]-measured[0] > .00025
 
 
 def test_dynamic_open_close(scene):

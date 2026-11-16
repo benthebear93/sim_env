@@ -1,0 +1,12 @@
+<mujoco model="realsense_d405_preview">
+  <include file="d405.xml" />
+  <statistic center="0 0 0.021" extent="0.10500000000000001" />
+  <visual>
+    <headlight ambient=".4 .4 .4" diffuse=".7 .7 .7" />
+    <global offwidth="1200" offheight="900" />
+  </visual>
+  <worldbody>
+    <light pos=".2 -.2 .5" dir="-.2 .2 -.5" />
+    <geom name="preview_floor" type="plane" size=".3 .3 .001" pos="0 0 -.0002" rgba=".16 .18 .2 1" contype="0" conaffinity="0" />
+  </worldbody>
+</mujoco>

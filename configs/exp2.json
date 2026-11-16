@@ -19,17 +19,25 @@
   "gripper": {
     "opening_m": 0.05,
     "reference_opening_m": 0.05,
-    "surface_gap_at_reference_m": 0.05,
-    "note": "Opening is the nominal WSG register (twice slide q). Equal opening and gel gap are an explicit uncalibrated default, adjustable using the reference fields."
+    "surface_gap_at_reference_m": 0.0505,
+    "note": "Opening is the nominal WSG register (twice slide q). Gap is measured between opposing curved gel apexes. The 0.5 mm offset preserves the existing finger/housing mounts when replacing the 4.25 mm flat pads with 4.0 mm curved CAD. This remains an uncalibrated nominal opening-to-gap mapping."
   },
   "sensor": {
-    "gel_size_m": [0.00425, 0.02075, 0.02525],
+    "gel_geometry": {
+      "source_stl": "assets/wsg50_gelsight/source/curved/feats_gelsight_mini.stl",
+      "scale_to_m": 0.001,
+      "source_to_sensor_rotation": [[0, -1, 0], [0, 0, -1], [1, 0, 0]],
+      "source_to_sensor_translation_mm": [21.375, -0.5, 0.25],
+      "bounds_sensor_m": [[-0.001875, -0.010375, -0.012625], [0.002125, 0.010375, 0.012625]],
+      "apex_sensor_m": [-0.001875, 0.0, 0.0],
+      "note": "FEATS curved CAD, rigid registration without geometric rescaling; back plane remains at sensor x=2.125 mm. Published nominal geometry, not a measurement of the individual gel."
+    },
     "finger_mass_kg": 0.025,
     "sensor_mass_kg": 0.035,
     "carriage_mass_kg": 0.05,
     "assembly_com_sensor_m": [0.014, 0.0, 0.014],
     "assembly_diaginertia_kg_m2": [0.00002, 0.00003, 0.00002],
-    "note": "Masses and inertia are source simulation assumptions. Gel is a rigid contact box; no optical tactile rendering or continuum deformation model."
+    "note": "Masses and inertia are source simulation assumptions. Gel visual geometry is the curved CAD mesh; MuJoCo collision uses its convex hull. No optical tactile rendering or continuum deformation model."
   },
   "camera": {
     "lookat": [0.53, -0.37, 0.18],

@@ -103,7 +103,7 @@ def set_gripper_opening(model, data, opening_m):
     """Set the WSG opening target in meters (twice each slide displacement).
 
     Exp 1 equates this with the inner jaw gap. Exp 2 uses a configurable
-    opening-to-gel-gap offset; its nominal parallel mounting has zero offset.
+    opening-to-gel-apex-gap offset; its current curved pads add 0.5 mm.
     """
     maximum = 2 * model.jnt_range[model.joint("wsg_left_slide").id, 1]
     if not 0 <= opening_m <= maximum:

@@ -1,0 +1,310 @@
+{
+  "model": "D405",
+  "root_body": "d405_bottom_screw_frame",
+  "frames": {
+    "d405_bottom_screw_frame": {
+      "parent": "world",
+      "translation_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "d405_link": {
+      "parent": "d405_bottom_screw_frame",
+      "translation_m": [
+        0.01085,
+        0.009,
+        0.021
+      ],
+      "rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "d405_depth_frame": {
+      "parent": "d405_link",
+      "translation_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "d405_depth_optical_frame": {
+      "parent": "d405_depth_frame",
+      "translation_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_matrix": [
+        [
+          4.896583138958022e-12,
+          4.896583138958022e-12,
+          1.0
+        ],
+        [
+          -1.0,
+          -5.551115123125783e-17,
+          4.896583138958022e-12
+        ],
+        [
+          5.551115123125783e-17,
+          -1.0,
+          4.896583138958022e-12
+        ]
+      ]
+    },
+    "d405_infra1_frame": {
+      "parent": "d405_link",
+      "translation_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "d405_infra1_optical_frame": {
+      "parent": "d405_infra1_frame",
+      "translation_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_matrix": [
+        [
+          4.896583138958022e-12,
+          4.896583138958022e-12,
+          1.0
+        ],
+        [
+          -1.0,
+          -5.551115123125783e-17,
+          4.896583138958022e-12
+        ],
+        [
+          5.551115123125783e-17,
+          -1.0,
+          4.896583138958022e-12
+        ]
+      ]
+    },
+    "d405_infra2_frame": {
+      "parent": "d405_link",
+      "translation_m": [
+        0.0,
+        -0.018,
+        0.0
+      ],
+      "rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "d405_infra2_optical_frame": {
+      "parent": "d405_infra2_frame",
+      "translation_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_matrix": [
+        [
+          4.896583138958022e-12,
+          4.896583138958022e-12,
+          1.0
+        ],
+        [
+          -1.0,
+          -5.551115123125783e-17,
+          4.896583138958022e-12
+        ],
+        [
+          5.551115123125783e-17,
+          -1.0,
+          4.896583138958022e-12
+        ]
+      ]
+    },
+    "d405_color_frame": {
+      "parent": "d405_link",
+      "translation_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "d405_color_optical_frame": {
+      "parent": "d405_color_frame",
+      "translation_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_matrix": [
+        [
+          4.896583138958022e-12,
+          4.896583138958022e-12,
+          1.0
+        ],
+        [
+          -1.0,
+          -5.551115123125783e-17,
+          4.896583138958022e-12
+        ],
+        [
+          5.551115123125783e-17,
+          -1.0,
+          4.896583138958022e-12
+        ]
+      ]
+    }
+  },
+  "source_mesh_units": "millimeters",
+  "mesh_scale_to_m": [
+    0.001,
+    0.001,
+    0.001
+  ],
+  "source_mesh_bounds_mm": [
+    [
+      -21.09000015258789,
+      -21.0,
+      -23.0
+    ],
+    [
+      21.0,
+      21.0,
+      0.0
+    ]
+  ],
+  "visual_origin_link_m": [
+    0.0038,
+    -0.009,
+    0.0
+  ],
+  "visual_rotation_link": [
+    [
+      4.896583138958022e-12,
+      -4.896583138958022e-12,
+      1.0
+    ],
+    [
+      1.0,
+      -5.551115123125783e-17,
+      -4.896583138958022e-12
+    ],
+    [
+      5.551115123125783e-17,
+      1.0,
+      4.896583138958022e-12
+    ]
+  ],
+  "collision_box_dimensions_xyz_m": [
+    0.023,
+    0.042,
+    0.042
+  ],
+  "mass_kg": 0.072,
+  "inertia_diagonal_kg_m2": [
+    2.1167999999999998e-05,
+    1.3757999999999998e-05,
+    1.3757999999999998e-05
+  ],
+  "dynamics_status": "Upstream placeholder mass; uniform-box inertia computed here. Not measured camera dynamics.",
+  "extrinsics_status": "Nominal upstream fixed frames, not per-device calibrated extrinsics.",
+  "camera_model_status": "Geometry and frame sites only; no optical intrinsics, depth noise or hardware stream simulation."
+}

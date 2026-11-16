@@ -1,0 +1,35 @@
+<mujoco>
+  <body name="d405_bottom_screw_frame" pos="0 0 0" quat="1 0 0 0">
+    <site name="d405_bottom_screw_frame_site" size=".001" group="4" />
+    <body name="d405_link" pos="0.01085 0.009 0.021" quat="1 0 0 0">
+      <site name="d405_link_site" size=".001" group="4" />
+      <body name="d405_depth_frame" pos="0 0 0" quat="1 0 0 0">
+        <site name="d405_depth_frame_site" size=".001" group="4" />
+        <body name="d405_depth_optical_frame" pos="0 0 0" quat="0.500000000002 -0.5 0.499999999998 -0.5">
+          <site name="d405_depth_optical_frame_site" size=".001" group="4" />
+        </body>
+      </body>
+      <body name="d405_infra1_frame" pos="0 0 0" quat="1 0 0 0">
+        <site name="d405_infra1_frame_site" size=".001" group="4" />
+        <body name="d405_infra1_optical_frame" pos="0 0 0" quat="0.500000000002 -0.5 0.499999999998 -0.5">
+          <site name="d405_infra1_optical_frame_site" size=".001" group="4" />
+        </body>
+      </body>
+      <body name="d405_infra2_frame" pos="0 -0.018 0" quat="1 0 0 0">
+        <site name="d405_infra2_frame_site" size=".001" group="4" />
+        <body name="d405_infra2_optical_frame" pos="0 0 0" quat="0.500000000002 -0.5 0.499999999998 -0.5">
+          <site name="d405_infra2_optical_frame_site" size=".001" group="4" />
+        </body>
+      </body>
+      <body name="d405_color_frame" pos="0 0 0" quat="1 0 0 0">
+        <site name="d405_color_frame_site" size=".001" group="4" />
+        <body name="d405_color_optical_frame" pos="0 0 0" quat="0.500000000002 -0.5 0.499999999998 -0.5">
+          <site name="d405_color_optical_frame_site" size=".001" group="4" />
+        </body>
+      </body>
+      <geom name="d405_visual" type="mesh" mesh="d405_mesh" rgba=".55 .57 .59 1" group="2" contype="0" conaffinity="0" mass="0" pos="0.0038 -0.009 0" quat="0.500000000002 0.5 0.499999999998 0.5" />
+      <geom name="d405_collision" type="box" size="0.0115 0.021 0.021" group="3" mass="0" pos="-0.0078 -0.009 0" quat="1 0 0 0" />
+      <inertial pos="-0.0078 -0.009 0" mass="0.072" diaginertia="2.1168e-05 1.3758e-05 1.3758e-05" />
+    </body>
+  </body>
+</mujoco>

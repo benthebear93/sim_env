@@ -464,6 +464,127 @@
       "source": "/home/haegu/diffpatch_ex/assets/real2sim_system/gelsight/WSG_LICENSE",
       "path": "assets/wsg50_gelsight/source/WSG_LICENSE",
       "sha256": "9873a83dddefdf6d63f1c713a81eab1a5d3a3dd53cb9958de997cf9d254effa5"
+    },
+    {
+      "source": "/home/haegu/diffpatch_ex/output/newton_real2sim/20261106T164530_844426Z_3f6c73/curved_feats_input/gel_curved_sensor_m.obj",
+      "path": "assets/wsg50_gelsight/source/curved/gel_curved_sensor_m.obj",
+      "sha256": "6577e1e135d57637887faa089884e26e4fb5821fbe6e8ac408f147a0971d4fe7"
+    },
+    {
+      "source": "/home/haegu/diffpatch_ex/output/newton_real2sim/20261106T164530_844426Z_3f6c73/curved_feats_input/curved_geometry_provenance.json",
+      "path": "assets/wsg50_gelsight/source/curved/curved_geometry_provenance.json",
+      "sha256": "64b3d28461cc203e46e58718d6a0b5b3f7455900409a59b4e37cde6a2155b571"
+    },
+    {
+      "source": "/home/haegu/diffpatch_ex/output/gel_curvature_literature/feats_gelsight_mini.step",
+      "path": "assets/wsg50_gelsight/source/curved/feats_gelsight_mini.step",
+      "sha256": "34ab71bea58957f02fb4ccd44baccebe64fa7c8e9a5b39051cfcd77bcafe92e0"
+    },
+    {
+      "source": "/home/haegu/diffpatch_ex/output/gel_curvature_literature/feats_gelsight_mini.stl",
+      "path": "assets/wsg50_gelsight/source/curved/feats_gelsight_mini.stl",
+      "sha256": "95088474e851cf41c3a13d95eb2d8bdce9c74d8222dea1d99107fe8a9bf5644b"
+    },
+    {
+      "source": "/home/haegu/diffpatch_ex/output/gel_curvature_literature/FEATS_LICENSE",
+      "path": "assets/wsg50_gelsight/source/curved/FEATS_LICENSE",
+      "sha256": "6860dfd559e588d20bc8b9ba3feb529d2868a9955d152a8f63036a210ebd0a75"
+    },
+    {
+      "source": "/home/haegu/diffpatch_ex/output/gel_curvature_literature/feats_geometry_audit.json",
+      "path": "assets/wsg50_gelsight/source/curved/feats_geometry_audit.json",
+      "sha256": "358857936f4451c11f2ddded33f777b5e76a402e12d2a4325ee6a8e3c7fffe12"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/realsenseai/realsense-ros/960306819f45006ca3f903aa046bed32c509679a/LICENSE",
+      "path": "assets/realsense/source/LICENSE",
+      "sha256": "7092398b52290edddcb41c6e2297f4c6343eb315ea6c83edfdbeea2a73adfbdb",
+      "git_blob_sha": "d639b1e2457de50acbd2d943a593b701331a2824",
+      "size_bytes": 10758
+    },
+    {
+      "source": "https://raw.githubusercontent.com/realsenseai/realsense-ros/960306819f45006ca3f903aa046bed32c509679a/NOTICE.md",
+      "path": "assets/realsense/source/NOTICE.md",
+      "sha256": "da7bc58b3a30decbf86926d6938cbd15e4252fd2b674a25223f84110b6af344a",
+      "git_blob_sha": "01c648c4e7eaad5ae4e84047af4ec5c13e2cb396",
+      "size_bytes": 30548
+    },
+    {
+      "source": "https://raw.githubusercontent.com/realsenseai/realsense-ros/960306819f45006ca3f903aa046bed32c509679a/realsense2_description/meshes/d405.stl",
+      "path": "assets/realsense/source/realsense2_description/meshes/d405.stl",
+      "sha256": "a248f41149d12b28311829feecbe7a80cf1481fd05e0f5df2c4c7ecd556edd48",
+      "git_blob_sha": "413d260f6d2294e19401298bf698be7e4cfa502f",
+      "size_bytes": 194684
+    },
+    {
+      "source": "https://raw.githubusercontent.com/realsenseai/realsense-ros/960306819f45006ca3f903aa046bed32c509679a/realsense2_description/meshes/d455.stl",
+      "path": "assets/realsense/source/realsense2_description/meshes/d455.stl",
+      "sha256": "47e8321db7cb42291810c69329ab10b601108d651dfcac28bfc12469fa142fa6",
+      "git_blob_sha": "9b30406e532f7c3939e6f52440c8f85bc7e2b934",
+      "size_bytes": 2558184
+    },
+    {
+      "source": "https://raw.githubusercontent.com/realsenseai/realsense-ros/960306819f45006ca3f903aa046bed32c509679a/realsense2_description/meshes/plug.stl",
+      "path": "assets/realsense/source/realsense2_description/meshes/plug.stl",
+      "sha256": "91a0bc6ec83fa24b5dcd4de0d1c0ed78032af2e7ed233b4b232bdbf906fea744",
+      "git_blob_sha": "682bce043b3616214e669f80f385b0d610c2f11b",
+      "size_bytes": 292334
+    },
+    {
+      "source": "https://raw.githubusercontent.com/realsenseai/realsense-ros/960306819f45006ca3f903aa046bed32c509679a/realsense2_description/meshes/plug_collision.stl",
+      "path": "assets/realsense/source/realsense2_description/meshes/plug_collision.stl",
+      "sha256": "fc210c929bba2c9cf3f4ec074d4e6a38549904e9a1eddee9661f34ef7c610f5f",
+      "git_blob_sha": "2e493bdfa7d227801841f88479afb7ec3959b0a2",
+      "size_bytes": 11284
+    },
+    {
+      "source": "https://raw.githubusercontent.com/realsenseai/realsense-ros/960306819f45006ca3f903aa046bed32c509679a/realsense2_description/urdf/_d405.urdf.xacro",
+      "path": "assets/realsense/source/realsense2_description/urdf/_d405.urdf.xacro",
+      "sha256": "81118e87388c06e4cf1b3dc8b114096de21c1b235bd283dafad84d2bd97aebb1",
+      "git_blob_sha": "8bfb3f0a10e8945bc73dfe78a6946d4b3e9468a5",
+      "size_bytes": 7282
+    },
+    {
+      "source": "https://raw.githubusercontent.com/realsenseai/realsense-ros/960306819f45006ca3f903aa046bed32c509679a/realsense2_description/urdf/_d455.urdf.xacro",
+      "path": "assets/realsense/source/realsense2_description/urdf/_d455.urdf.xacro",
+      "sha256": "c921a2bed11f59dfb16d81dcc3358257eee5bd0c3a0f3a1081a4109a9f9b76e4",
+      "git_blob_sha": "29555932a686486919814ab89e8ad1ab3c991257",
+      "size_bytes": 9429
+    },
+    {
+      "source": "https://raw.githubusercontent.com/realsenseai/realsense-ros/960306819f45006ca3f903aa046bed32c509679a/realsense2_description/urdf/_materials.urdf.xacro",
+      "path": "assets/realsense/source/realsense2_description/urdf/_materials.urdf.xacro",
+      "sha256": "cd8a4b4ab488b57855318e68226329a80310ee45e3aa489dd75222f2c607d005",
+      "git_blob_sha": "dd1a161c9876b540c4db7575ab498740f2e2f4af",
+      "size_bytes": 1213
+    },
+    {
+      "source": "https://raw.githubusercontent.com/realsenseai/realsense-ros/960306819f45006ca3f903aa046bed32c509679a/realsense2_description/urdf/_usb_plug.urdf.xacro",
+      "path": "assets/realsense/source/realsense2_description/urdf/_usb_plug.urdf.xacro",
+      "sha256": "22531ecdc0b09aa3ab4408641432617b000618933e98dc2f488ac31b88c8ad79",
+      "git_blob_sha": "c360ef40d199fb1d0ef168d9c3db095200183690",
+      "size_bytes": 1798
+    },
+    {
+      "source": "https://raw.githubusercontent.com/realsenseai/realsense-ros/960306819f45006ca3f903aa046bed32c509679a/realsense2_description/urdf/test_d405_camera.urdf.xacro",
+      "path": "assets/realsense/source/realsense2_description/urdf/test_d405_camera.urdf.xacro",
+      "sha256": "a0db6ae9ced56cd347be8f5909c598228860f7a1e5c6083af14b636087d28fc2",
+      "git_blob_sha": "5a2b313f5d3a54ee64e2185b060440eb2dd67b6b",
+      "size_bytes": 437
+    },
+    {
+      "source": "https://raw.githubusercontent.com/realsenseai/realsense-ros/960306819f45006ca3f903aa046bed32c509679a/realsense2_description/urdf/test_d455_camera.urdf.xacro",
+      "path": "assets/realsense/source/realsense2_description/urdf/test_d455_camera.urdf.xacro",
+      "sha256": "30ea95596301b2bc04ac543fdae5c0b361638a6f9028ef39304612b3ca2b3333",
+      "git_blob_sha": "c581f756ffd53036335bac419a4c653ecf8f02ce",
+      "size_bytes": 437
+    },
+    {
+      "source": "https://raw.githubusercontent.com/realsenseai/realsense-ros/960306819f45006ca3f903aa046bed32c509679a/realsense2_description/package.xml",
+      "path": "assets/realsense/source/realsense2_description/package.xml",
+      "sha256": "ae74843a0595311573d8aed16e4a513e8804979661f1ddc9d23c1460f515e1e0",
+      "git_blob_sha": "9db128cdc84ca7c51b925758203d937a0e7be87c",
+      "size_bytes": 1071
     }
   ]
 }

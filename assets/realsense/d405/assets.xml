@@ -1,0 +1,5 @@
+<mujoco>
+  <asset>
+    <mesh name="d405_mesh" file="../source/realsense2_description/meshes/d405.stl" scale="0.001 0.001 0.001" />
+  </asset>
+</mujoco>
