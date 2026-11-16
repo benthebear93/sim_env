@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "units": "m, rad, kg, s; explicitly suffixed fields use deg or mm",
+  "calibration_file": "calibration/ur5e_base_calibration.json",
+  "table": {
+    "min_xy_m": [0.0, -0.8],
+    "max_xy_m": [1.2, 0.0],
+    "top_z_m": 0.0,
+    "thickness_m": 0.035,
+    "hole_spacing_m": 0.05,
+    "hole_edge_offset_m": 0.025,
+    "hole_radius_m": 0.008,
+    "hole_segments": 32,
+    "hole_type": "through",
+    "note": "Radius and spacing adopted from the existing viewer, per user instruction. No threads."
+  },
+  "robot": {
+    "world_origin_in_calibration_xy_mm": [0.0, 0.0],
+    "ur_base_above_table_m": 0.041,
+    "model_to_ur_base_yaw_deg": 180.0,
+    "fit_model_translation": true,
+    "reference_q_deg": [-35.56, -101.41, -71.46, -88.19, 88.47, -169.95],
+    "reference_tool0_ur_base_mm": [390.832624, -452.030807, 551.174581],
+    "initial_q_deg": [-3.83, -108.92, -98.15, -61.33, 90.44, -137.63],
+    "mount_spacer_radius_m": 0.075,
+    "note": "Base height and reference sample match tactile pick_runtime.py. Spacer radius is a visual approximation. URDF kinematics are nominal, not factory calibrated."
+  },
+  "flange_adapter": {
+    "radius_m": 0.032,
+    "thickness_m": 0.020,
+    "density_kg_m3": 2700.0,
+    "note": "Cylinder dimensions match the tactile preview; density is an aluminum assumption. Bolt holes/CAD are not supplied. Attached to UR tool0, not the differently oriented ROS flange frame."
+  },
+  "gripper": {
+    "body_mass_kg": 0.988882,
+    "body_size_sdf_m": [0.146, 0.0725, 0.05],
+    "body_link_y_m": -0.049133,
+    "finger_size_tool0_m": [0.012, 0.020, 0.070],
+    "finger_mass_kg": 0.05,
+    "opening_m": 0.05,
+    "maximum_opening_m": 0.11,
+    "tcp_from_tool0_m": [0.0, 0.0, 0.145],
+    "note": "WSG 050-110 body mesh; symmetric box fingers match preview dimensions. Actual asymmetric tactile fingers/GelSight geometry and contact properties are not identified. Joint coordinates are half the inner jaw gap."
+  },
+  "simulation": {
+    "timestep_s": 0.002,
+    "friction": [0.8, 0.005, 0.0001],
+    "note": "Position servos, damping and friction are simulation defaults, not identified hardware parameters."
+  }
+}

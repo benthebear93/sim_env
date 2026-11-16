@@ -1,0 +1,186 @@
+{
+  "name": "ur5e_base_calibration",
+  "source": {
+    "repo": "/home/haegu/ur_controller",
+    "robot_points_file": "calibration/robot_base_p.pkl",
+    "world_points_file": "calibration/world_base_p_prime.pkl",
+    "calculation_script": "calibration/calibration_from_data.py",
+    "matching_config_constants": [
+      "UR5E_BASE_POS",
+      "UR5E_BASE_ROT"
+    ]
+  },
+  "frame_convention": {
+    "transform": "T_world_from_ur_base",
+    "equation": "p_world = R_world_from_ur_base * p_ur_base + t_world_from_ur_base",
+    "inverse_equation": "p_ur_base = R_world_from_ur_base^T * (p_world - t_world_from_ur_base)"
+  },
+  "units": {
+    "transform_translation": "m",
+    "sample_points": "mm"
+  },
+  "transform": {
+    "translation_m": [
+      0.124614895080587,
+      -0.375523055764868,
+      0.023194975866158
+    ],
+    "rotation_matrix": [
+      [
+        0.707507682789,
+        -0.706704342567,
+        0.001360511677
+      ],
+      [
+        0.706705549046,
+        0.707505228515,
+        -0.001902254499
+      ],
+      [
+        0.00038176239,
+        0.002307340825,
+        0.999997265214
+      ]
+    ],
+    "homogeneous_matrix": [
+      [
+        0.707507682789,
+        -0.706704342567,
+        0.001360511677,
+        0.124614895080587
+      ],
+      [
+        0.706705549046,
+        0.707505228515,
+        -0.001902254499,
+        -0.375523055764868
+      ],
+      [
+        0.00038176239,
+        0.002307340825,
+        0.999997265214,
+        0.023194975866158
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "quaternion_wxyz_from_matrix": [
+      0.92398730734222,
+      0.001138975419542,
+      0.000264816756553,
+      0.382421349400856
+    ],
+    "quaternion_xyzw_from_matrix": [
+      0.001138975419542,
+      0.000264816756553,
+      0.382421349400856,
+      0.92398730734222
+    ]
+  },
+  "fit": {
+    "determinant": 1.0,
+    "rmse_mm": 0.241466871557401,
+    "max_error_mm": 0.326056347679502
+  },
+  "calibration_points": [
+    {
+      "id": "p1",
+      "robot_base_mm": [
+        495.67,
+        -141.07,
+        -4.89
+      ],
+      "world_mm": [
+        575.0,
+        -125.0,
+        18.1
+      ]
+    },
+    {
+      "id": "p2",
+      "robot_base_mm": [
+        36.14,
+        -530.2,
+        -4.13
+      ],
+      "world_mm": [
+        525.0,
+        -725.0,
+        18.1
+      ]
+    },
+    {
+      "id": "p3",
+      "robot_base_mm": [
+        -105.44,
+        -388.9,
+        -4.05
+      ],
+      "world_mm": [
+        325.0,
+        -725.0,
+        18.1
+      ]
+    },
+    {
+      "id": "p4",
+      "robot_base_mm": [
+        319.03,
+        -388.72,
+        -4.25
+      ],
+      "world_mm": [
+        625.0,
+        -425.0,
+        18.1
+      ]
+    },
+    {
+      "id": "p7",
+      "robot_base_mm": [
+        672.9,
+        -388.43,
+        -4.38
+      ],
+      "world_mm": [
+        875.0,
+        -175.0,
+        18.1
+      ]
+    },
+    {
+      "id": "p8",
+      "robot_base_mm": [
+        213.15,
+        -636.18,
+        -3.5
+      ],
+      "world_mm": [
+        725.0,
+        -675.0,
+        18.1
+      ]
+    },
+    {
+      "id": "p9",
+      "robot_base_mm": [
+        460.62,
+        -388.49,
+        -4.66
+      ],
+      "world_mm": [
+        725.0,
+        -325.0,
+        18.1
+      ]
+    }
+  ],
+  "notes": [
+    "Original save_calibration_data.py used adding_side_holes = False, so side-hole samples p5 and p6 are not included.",
+    "Source tcp_lenght spelling preserved in original script; value was 18.1 mm."
+  ]
+}

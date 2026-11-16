@@ -1,0 +1,271 @@
+{
+  "name": "ROBOTIS HX5-D20",
+  "revision": "rev2",
+  "sides": [
+    "left",
+    "right"
+  ],
+  "repository": "https://github.com/ROBOTIS-GIT/robotis_hand",
+  "commit": "7730b76bbac51786b122023a7ab2afc17afc7d12",
+  "license": "Apache-2.0",
+  "downloaded_utc": "2026-11-16",
+  "modifications": "None; original upstream paths below robotis_hand_description are preserved. package.xml is stored as upstream_package.xml for reference. ROS launch/control wrappers are excluded.",
+  "files": [
+    {
+      "path": "LICENSE",
+      "upstream_path": "LICENSE",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "git_blob_sha": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "bytes": 11357
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_left/collision/hx5_d20_base_collision_00.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/collision/hx5_d20_base_collision_00.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/collision/hx5_d20_base_collision_00.stl",
+      "sha256": "a0ba7e897eb63ec80c39120c7e718d2d45854ef89818391519ca50c390f60be8",
+      "git_blob_sha": "4804e3e4e7b6322afbdf99b1062779753bdfea87",
+      "bytes": 88684
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_left/collision/hx5_d20_base_collision_01.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/collision/hx5_d20_base_collision_01.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/collision/hx5_d20_base_collision_01.stl",
+      "sha256": "1aadaa1a187164cf0074774fa9cf2c843959c9729cf0a4f4d8d3e11328b56bac",
+      "git_blob_sha": "6763293ee1ef39b78eef87387d4bca57cc54794e",
+      "bytes": 349284
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_base_unit.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_base_unit.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_base_unit.stl",
+      "sha256": "23f3752baec69ba9641a2152d4ec8f60fb09c9510141c978ed77756bcaf6ca64",
+      "git_blob_sha": "a1153415b52836935a7cbaccf3445c9d9163d162",
+      "bytes": 6610784
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_dip.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_dip.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_dip.stl",
+      "sha256": "e582ee3126bd9b6e7c3ca1a8ac415be56c2395c70eeb6f6e339c23feccf09495",
+      "git_blob_sha": "441d4f3254f0ae9a753462867452b8e7c4a34521",
+      "bytes": 456084
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_mcp.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_mcp.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_mcp.stl",
+      "sha256": "b3913fed373aae024fad967b4ce591d7eb0ea589f36b49bcc1be17120546e07c",
+      "git_blob_sha": "2ac52e0f7e93b4ba81ec8b36e8bb7918ea91ce73",
+      "bytes": 493284
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_pip.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_pip.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_pip.stl",
+      "sha256": "d7f9d330496c0f32e066248bf8a81b1da8b22a250b710bbf0fc9738ff16dd307",
+      "git_blob_sha": "f55a494a85fcd352ec339695509d4d07d9eb151f",
+      "bytes": 456084
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_tip.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_tip.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_tip.stl",
+      "sha256": "e23344be5dc686cdfcc9c3dfc3d187f0715bdbe971e655642e3cc8ff00ff6030",
+      "git_blob_sha": "4cda66b7b65d7b9306e22186dc08d4e4063f14fc",
+      "bytes": 225884
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_ip.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_ip.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_ip.stl",
+      "sha256": "cc0c0e8792f3a20f02faec5a14db94f2cd3165c5f43050c0f2302b760ec92fa6",
+      "git_blob_sha": "4da311794e8c80c7edc1880bddc8b5811d701e69",
+      "bytes": 1518584
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_mcp.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_mcp.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_mcp.stl",
+      "sha256": "a86a80ef87023e30cb0e4d587ce199cdf1ffe0400a669f831715867f1f8357d8",
+      "git_blob_sha": "5092fce607bcad14ceeda6b9cfa4eb47a8f7d5c9",
+      "bytes": 1442884
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_mcp2.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_mcp2.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_mcp2.stl",
+      "sha256": "ea94099885281667e7084733da3f46c4909a23c8a17507ac7a02ad69d123b215",
+      "git_blob_sha": "2c4effa64eda9d2e9e8e17a2063787f6d6cf2b33",
+      "bytes": 843484
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_tip.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_tip.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_tip.stl",
+      "sha256": "c3efebd7b37aecc8338f51463c226b048d415bb1378c521b8f34339ae1bd6f14",
+      "git_blob_sha": "ca96fb270d9de9e11351fc2b188148f14e8dee80",
+      "bytes": 1815084
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_right/collision/hx5_d20_base_collision_00.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/collision/hx5_d20_base_collision_00.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/collision/hx5_d20_base_collision_00.stl",
+      "sha256": "35ebcc3aee70daacd8d21b22cd539a5abfc93a0ed98c29a61e2dd72c9376a80b",
+      "git_blob_sha": "3753f421295a8e1d42d7da26db60c59ceb50eea3",
+      "bytes": 11184
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_right/collision/hx5_d20_base_collision_01.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/collision/hx5_d20_base_collision_01.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/collision/hx5_d20_base_collision_01.stl",
+      "sha256": "838b402e4acc9e980d8429fae3cefeae0d9949fd5ddcdfee879f4287087ec8a1",
+      "git_blob_sha": "c2ff06289bf7401c1bf6346c63153a87c5641e16",
+      "bytes": 34084
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_base_unit.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_base_unit.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_base_unit.stl",
+      "sha256": "4ddee90cb3dd3a1c74da46b8e201715dc3061beb19e293ef0d87eed5547a2fa2",
+      "git_blob_sha": "e5a88381034baa43c05acfafaa589a0a43aa39f5",
+      "bytes": 2107884
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_dip.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_dip.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_dip.stl",
+      "sha256": "e582ee3126bd9b6e7c3ca1a8ac415be56c2395c70eeb6f6e339c23feccf09495",
+      "git_blob_sha": "441d4f3254f0ae9a753462867452b8e7c4a34521",
+      "bytes": 456084
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_mcp.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_mcp.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_mcp.stl",
+      "sha256": "b3913fed373aae024fad967b4ce591d7eb0ea589f36b49bcc1be17120546e07c",
+      "git_blob_sha": "2ac52e0f7e93b4ba81ec8b36e8bb7918ea91ce73",
+      "bytes": 493284
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_pip.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_pip.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_pip.stl",
+      "sha256": "d7f9d330496c0f32e066248bf8a81b1da8b22a250b710bbf0fc9738ff16dd307",
+      "git_blob_sha": "f55a494a85fcd352ec339695509d4d07d9eb151f",
+      "bytes": 456084
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_tip.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_tip.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_tip.stl",
+      "sha256": "e23344be5dc686cdfcc9c3dfc3d187f0715bdbe971e655642e3cc8ff00ff6030",
+      "git_blob_sha": "4cda66b7b65d7b9306e22186dc08d4e4063f14fc",
+      "bytes": 225884
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_ip.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_ip.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_ip.stl",
+      "sha256": "fa2759b28c8fd8fd3ef3fbeb6e280e6bb23f0cdcbfd6f0463261a0babad31b79",
+      "git_blob_sha": "ca5ffe8cc45595bed19a2c24baa82ac352856d32",
+      "bytes": 866184
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_mcp.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_mcp.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_mcp.stl",
+      "sha256": "b050d0c2c8a3f7cac6e03dd8be2aa95cc3418617ebb686d61e672b39cb25cc51",
+      "git_blob_sha": "ff2f86f2cec3cf751c8e04500f01ff60f1d77f4f",
+      "bytes": 948484
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_mcp2.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_mcp2.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_mcp2.stl",
+      "sha256": "72d2ae2396f7edffab447cb90b81a7ba52913df6196c74d20fd49851c370a119",
+      "git_blob_sha": "7d2c6bd822ac4a33fa810c449229d7e10c1dde83",
+      "bytes": 480684
+    },
+    {
+      "path": "meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_tip.stl",
+      "upstream_path": "robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_tip.stl",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_tip.stl",
+      "sha256": "c94412c121cfdd6a98d0857010cd0d603415d832f05dbf369347f74f97b515d5",
+      "git_blob_sha": "a15f388153266a53fe1e79f02d45b2b683c96f88",
+      "bytes": 873184
+    },
+    {
+      "path": "mujoco/hx5_d20_rev2/hx5_d20.xml",
+      "upstream_path": "robotis_hand_description/mujoco/hx5_d20_rev2/hx5_d20.xml",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/mujoco/hx5_d20_rev2/hx5_d20.xml",
+      "sha256": "182a440b253b158f6f0015913bd1c21774b74ee225d5f5ccddce6419d88047b5",
+      "git_blob_sha": "45923cc3e586e5a0708e738be2c64c0ab3374e42",
+      "bytes": 598
+    },
+    {
+      "path": "mujoco/hx5_d20_rev2/hx5_d20_left.xml",
+      "upstream_path": "robotis_hand_description/mujoco/hx5_d20_rev2/hx5_d20_left.xml",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/mujoco/hx5_d20_rev2/hx5_d20_left.xml",
+      "sha256": "740dd652f7b27e40a60dca3cde2358a8b193a963c999c4b2502c6a25cbce5968",
+      "git_blob_sha": "1f7ed6d713e414711136836e9c7517c2886373cb",
+      "bytes": 17554
+    },
+    {
+      "path": "mujoco/hx5_d20_rev2/hx5_d20_right.xml",
+      "upstream_path": "robotis_hand_description/mujoco/hx5_d20_rev2/hx5_d20_right.xml",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/mujoco/hx5_d20_rev2/hx5_d20_right.xml",
+      "sha256": "e6de4c63ff62d3e1ba2dac7b32bc0bb290714f051a3a17b347fe8df4660a2252",
+      "git_blob_sha": "ad10e9eaac998721baa0d3c48d8f606effac50fa",
+      "bytes": 17707
+    },
+    {
+      "path": "mujoco/hx5_d20_rev2/scene.xml",
+      "upstream_path": "robotis_hand_description/mujoco/hx5_d20_rev2/scene.xml",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/mujoco/hx5_d20_rev2/scene.xml",
+      "sha256": "c6252544988de8bcd65bf13febb36fae4c1d3aebb152383f588ef4a26ce709ce",
+      "git_blob_sha": "eea1c51b176fa73f5b775bcd0e1888c6d949a143",
+      "bytes": 1054
+    },
+    {
+      "path": "mujoco/hx5_d20_rev2/scene_left.xml",
+      "upstream_path": "robotis_hand_description/mujoco/hx5_d20_rev2/scene_left.xml",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/mujoco/hx5_d20_rev2/scene_left.xml",
+      "sha256": "8f6031d2b468d5b901450a7aff91f1b11a57378047e2558e1a2f33b296836224",
+      "git_blob_sha": "c1853dc411c280ced7e5744af52cfce306a63df1",
+      "bytes": 975
+    },
+    {
+      "path": "mujoco/hx5_d20_rev2/scene_right.xml",
+      "upstream_path": "robotis_hand_description/mujoco/hx5_d20_rev2/scene_right.xml",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/mujoco/hx5_d20_rev2/scene_right.xml",
+      "sha256": "fbeb74bae135181ebca1c5fb1455564a1f410cf3b9484fd1aa9cf79b032b2b98",
+      "git_blob_sha": "87ecd91b05c88dbb4e55780a63886ccc53b11189",
+      "bytes": 977
+    },
+    {
+      "path": "upstream_package.xml",
+      "upstream_path": "robotis_hand_description/package.xml",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/package.xml",
+      "sha256": "d3ebd42418813032f9aae7a1a2da5bad673a218007625b4efc913b044ff69b31",
+      "git_blob_sha": "04af9d821b672791e0438f6182ce39b6dd49527b",
+      "bytes": 1037
+    },
+    {
+      "path": "urdf/hx5_d20_rev2/hx5_d20_left.urdf.xacro",
+      "upstream_path": "robotis_hand_description/urdf/hx5_d20_rev2/hx5_d20_left.urdf.xacro",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/urdf/hx5_d20_rev2/hx5_d20_left.urdf.xacro",
+      "sha256": "34792809a076146967a5ff055fad564342d4acac66af70ece5e29d6f8ae55f6e",
+      "git_blob_sha": "df01ad9db28c312fd834c91855092467594aaa5a",
+      "bytes": 33765
+    },
+    {
+      "path": "urdf/hx5_d20_rev2/hx5_d20_right.urdf.xacro",
+      "upstream_path": "robotis_hand_description/urdf/hx5_d20_rev2/hx5_d20_right.urdf.xacro",
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/urdf/hx5_d20_rev2/hx5_d20_right.urdf.xacro",
+      "sha256": "aac2ff3f4d556b6b41af488fe2e21cfd80584ba271327596b92b82ae5a6f84b5",
+      "git_blob_sha": "393ae9d95547cde2ff80673782df7c6ad17cb7a8",
+      "bytes": 33765
+    }
+  ]
+}

@@ -1,0 +1,289 @@
+{
+  "files": [
+    {
+      "source": "/home/haegu/post_grasp_repair/outputs/robot_descriptions_cache/xacrodoc/ur5e_description/ur5e_description-d9b1b1510a0ddb97.urdf",
+      "path": "assets/ur5e/source/ur5e.urdf",
+      "sha256": "16877af78328201dbdd8b2877bdc810210508e69fe8c101dd8e0cc3f19b79c35"
+    },
+    {
+      "source": "/home/haegu/post_grasp_repair/outputs/robot_descriptions_cache/ur_description/LICENSE",
+      "path": "assets/ur5e/LICENSE",
+      "sha256": "143077f9f6a8de5a99f78c2c2472801fb53cf240277ef661642f079b9acdfff8"
+    },
+    {
+      "source": "/home/haegu/post_grasp_repair/outputs/robot_descriptions_cache/ur_description/meshes/ur5e/collision/base.stl",
+      "path": "assets/ur5e/source/meshes/collision/base.stl",
+      "sha256": "9a145e0d46f2130afdf2a2e8825a00a929870c4c3d6d8e4d1adc5f04db3aac1b"
+    },
+    {
+      "source": "/home/haegu/post_grasp_repair/outputs/robot_descriptions_cache/ur_description/meshes/ur5e/collision/forearm.stl",
+      "path": "assets/ur5e/source/meshes/collision/forearm.stl",
+      "sha256": "2e7423cab807c34160ec4f770daee5e747d70e777eb01b7beeace2b8c5751816"
+    },
+    {
+      "source": "/home/haegu/post_grasp_repair/outputs/robot_descriptions_cache/ur_description/meshes/ur5e/collision/shoulder.stl",
+      "path": "assets/ur5e/source/meshes/collision/shoulder.stl",
+      "sha256": "ceb92532177daa77682f5fbd628e01c2137d168f949a7a706ce1dabe9f002387"
+    },
+    {
+      "source": "/home/haegu/post_grasp_repair/outputs/robot_descriptions_cache/ur_description/meshes/ur5e/collision/upperarm.stl",
+      "path": "assets/ur5e/source/meshes/collision/upperarm.stl",
+      "sha256": "ee893044caf00075cb55b4cf666d1f1311c7979786212a501009f33bee945209"
+    },
+    {
+      "source": "/home/haegu/post_grasp_repair/outputs/robot_descriptions_cache/ur_description/meshes/ur5e/collision/wrist1.stl",
+      "path": "assets/ur5e/source/meshes/collision/wrist1.stl",
+      "sha256": "f8c9f9337b6fd98c75f052e96de10e14a107ddb6874ba6b904e546f8a4e4f43a"
+    },
+    {
+      "source": "/home/haegu/post_grasp_repair/outputs/robot_descriptions_cache/ur_description/meshes/ur5e/collision/wrist2.stl",
+      "path": "assets/ur5e/source/meshes/collision/wrist2.stl",
+      "sha256": "2964a63f60ce3e3cf3ad55bcf190d7876d50e373cb64b70a57cea5885eaf3c86"
+    },
+    {
+      "source": "/home/haegu/post_grasp_repair/outputs/robot_descriptions_cache/ur_description/meshes/ur5e/collision/wrist3.stl",
+      "path": "assets/ur5e/source/meshes/collision/wrist3.stl",
+      "sha256": "83b3666b4ae2badd54af0d2c25a921682ecbc29e849eec646c3ed55fb74c78a3"
+    },
+    {
+      "source": "/home/haegu/post_grasp_repair/outputs/robot_descriptions_cache/ur_description/meshes/ur5e/visual/base.dae",
+      "path": "assets/ur5e/source/meshes/visual/base.dae",
+      "sha256": "c30e4d7228ef633dca2a02c26df2316741f6642cb6333e8289dba6e6d0b22819"
+    },
+    {
+      "source": "/home/haegu/post_grasp_repair/outputs/robot_descriptions_cache/ur_description/meshes/ur5e/visual/forearm.dae",
+      "path": "assets/ur5e/source/meshes/visual/forearm.dae",
+      "sha256": "04694bf57dac46e9b8bc7c30f2eec75a1bc762e1f1a879ea30c944f24cacbad8"
+    },
+    {
+      "source": "/home/haegu/post_grasp_repair/outputs/robot_descriptions_cache/ur_description/meshes/ur5e/visual/shoulder.dae",
+      "path": "assets/ur5e/source/meshes/visual/shoulder.dae",
+      "sha256": "c581bfa55b86061d9b99d315ed53817b6b693e6a500643bbf9bbb783322d585d"
+    },
+    {
+      "source": "/home/haegu/post_grasp_repair/outputs/robot_descriptions_cache/ur_description/meshes/ur5e/visual/upperarm.dae",
+      "path": "assets/ur5e/source/meshes/visual/upperarm.dae",
+      "sha256": "c040a05bb224f14cfab6aa6704d70cbb773ada940eca9a3e34e6ce486c4c4c29"
+    },
+    {
+      "source": "/home/haegu/post_grasp_repair/outputs/robot_descriptions_cache/ur_description/meshes/ur5e/visual/wrist1.dae",
+      "path": "assets/ur5e/source/meshes/visual/wrist1.dae",
+      "sha256": "a07a3d96d2540f9be12e4a07bcb8577d9f1e36005920c396a407804343a3b588"
+    },
+    {
+      "source": "/home/haegu/post_grasp_repair/outputs/robot_descriptions_cache/ur_description/meshes/ur5e/visual/wrist2.dae",
+      "path": "assets/ur5e/source/meshes/visual/wrist2.dae",
+      "sha256": "982fa42933c6f81629882ad7975e9ba5dac5d474a6b56694e233708376cf840e"
+    },
+    {
+      "source": "/home/haegu/post_grasp_repair/outputs/robot_descriptions_cache/ur_description/meshes/ur5e/visual/wrist3.dae",
+      "path": "assets/ur5e/source/meshes/visual/wrist3.dae",
+      "sha256": "7a7664ac4adcd53b0870fe6a2b8b975693d846dd4d07a5f44194c7d16f4890ba"
+    },
+    {
+      "source": "/home/haegu/post_grasp_tactile_manipulation/assets/wsg50_110/LICENSE",
+      "path": "assets/wsg50/source/LICENSE",
+      "sha256": "9873a83dddefdf6d63f1c713a81eab1a5d3a3dd53cb9958de997cf9d254effa5"
+    },
+    {
+      "source": "/home/haegu/post_grasp_tactile_manipulation/assets/wsg50_110/README.md",
+      "path": "assets/wsg50/source/README.md",
+      "sha256": "2e8a115bae497635a5132b936e0cc1734f086d10054f4a1443d4711d5bb13cdd"
+    },
+    {
+      "source": "/home/haegu/post_grasp_tactile_manipulation/assets/wsg50_110/finger_with_tip.bin",
+      "path": "assets/wsg50/source/finger_with_tip.bin",
+      "sha256": "789922f073f6faa6bd594ea463fefc850c4912e900c7d2e3ececf135714380b8"
+    },
+    {
+      "source": "/home/haegu/post_grasp_tactile_manipulation/assets/wsg50_110/finger_with_tip.gltf",
+      "path": "assets/wsg50/source/finger_with_tip.gltf",
+      "sha256": "d08ed20a04ce9615b7443050d85d280117ee5c4f578f4b84aee3e12902de6acb"
+    },
+    {
+      "source": "/home/haegu/post_grasp_tactile_manipulation/assets/wsg50_110/schunk_wsg_50_with_tip.sdf",
+      "path": "assets/wsg50/source/schunk_wsg_50_with_tip.sdf",
+      "sha256": "23dfc19a23e034215a9aed10e5f157fa5612e1e98c8726c6acabab3607292490"
+    },
+    {
+      "source": "/home/haegu/post_grasp_tactile_manipulation/assets/wsg50_110/wsg_body.bin",
+      "path": "assets/wsg50/source/wsg_body.bin",
+      "sha256": "fece9a6db696f8f1d7cd3c936c57ac3c3641494eb4537d1dc3fa3999f530cf37"
+    },
+    {
+      "source": "/home/haegu/post_grasp_tactile_manipulation/assets/wsg50_110/wsg_body.gltf",
+      "path": "assets/wsg50/source/wsg_body.gltf",
+      "sha256": "96ca9aa4503e077fcc74d415e7d71be51b7ade87611b9ad5ec9c892d4e627d66"
+    },
+    {
+      "source": "/home/haegu/post_grasp_tactile_manipulation/calibration/ur5e_base_calibration.json",
+      "path": "calibration/ur5e_base_calibration.json",
+      "sha256": "0b3ecf3fda4bdf2893c41c297eed8f7ec4e39741f757fb2e7d47f0465e02d330"
+    },
+    {
+      "source": "/home/haegu/post_grasp_tactile_manipulation/calibration/README.md",
+      "path": "calibration/SOURCE_README.md",
+      "sha256": "0e3fd40f36162858d621cd692f14224b066f98b643dc8b70f086d6dbdb94872a"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/LICENSE",
+      "path": "assets/robotis_hx5_d20/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/collision/hx5_d20_base_collision_00.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_left/collision/hx5_d20_base_collision_00.stl",
+      "sha256": "a0ba7e897eb63ec80c39120c7e718d2d45854ef89818391519ca50c390f60be8"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/collision/hx5_d20_base_collision_01.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_left/collision/hx5_d20_base_collision_01.stl",
+      "sha256": "1aadaa1a187164cf0074774fa9cf2c843959c9729cf0a4f4d8d3e11328b56bac"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_base_unit.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_base_unit.stl",
+      "sha256": "23f3752baec69ba9641a2152d4ec8f60fb09c9510141c978ed77756bcaf6ca64"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_dip.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_dip.stl",
+      "sha256": "e582ee3126bd9b6e7c3ca1a8ac415be56c2395c70eeb6f6e339c23feccf09495"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_mcp.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_mcp.stl",
+      "sha256": "b3913fed373aae024fad967b4ce591d7eb0ea589f36b49bcc1be17120546e07c"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_pip.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_pip.stl",
+      "sha256": "d7f9d330496c0f32e066248bf8a81b1da8b22a250b710bbf0fc9738ff16dd307"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_tip.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_finger_tip.stl",
+      "sha256": "e23344be5dc686cdfcc9c3dfc3d187f0715bdbe971e655642e3cc8ff00ff6030"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_ip.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_ip.stl",
+      "sha256": "cc0c0e8792f3a20f02faec5a14db94f2cd3165c5f43050c0f2302b760ec92fa6"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_mcp.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_mcp.stl",
+      "sha256": "a86a80ef87023e30cb0e4d587ce199cdf1ffe0400a669f831715867f1f8357d8"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_mcp2.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_mcp2.stl",
+      "sha256": "ea94099885281667e7084733da3f46c4909a23c8a17507ac7a02ad69d123b215"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_tip.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_left/hx5_d20_thumb_tip.stl",
+      "sha256": "c3efebd7b37aecc8338f51463c226b048d415bb1378c521b8f34339ae1bd6f14"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/collision/hx5_d20_base_collision_00.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_right/collision/hx5_d20_base_collision_00.stl",
+      "sha256": "35ebcc3aee70daacd8d21b22cd539a5abfc93a0ed98c29a61e2dd72c9376a80b"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/collision/hx5_d20_base_collision_01.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_right/collision/hx5_d20_base_collision_01.stl",
+      "sha256": "838b402e4acc9e980d8429fae3cefeae0d9949fd5ddcdfee879f4287087ec8a1"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_base_unit.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_base_unit.stl",
+      "sha256": "4ddee90cb3dd3a1c74da46b8e201715dc3061beb19e293ef0d87eed5547a2fa2"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_dip.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_dip.stl",
+      "sha256": "e582ee3126bd9b6e7c3ca1a8ac415be56c2395c70eeb6f6e339c23feccf09495"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_mcp.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_mcp.stl",
+      "sha256": "b3913fed373aae024fad967b4ce591d7eb0ea589f36b49bcc1be17120546e07c"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_pip.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_pip.stl",
+      "sha256": "d7f9d330496c0f32e066248bf8a81b1da8b22a250b710bbf0fc9738ff16dd307"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_tip.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_finger_tip.stl",
+      "sha256": "e23344be5dc686cdfcc9c3dfc3d187f0715bdbe971e655642e3cc8ff00ff6030"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_ip.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_ip.stl",
+      "sha256": "fa2759b28c8fd8fd3ef3fbeb6e280e6bb23f0cdcbfd6f0463261a0babad31b79"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_mcp.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_mcp.stl",
+      "sha256": "b050d0c2c8a3f7cac6e03dd8be2aa95cc3418617ebb686d61e672b39cb25cc51"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_mcp2.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_mcp2.stl",
+      "sha256": "72d2ae2396f7edffab447cb90b81a7ba52913df6196c74d20fd49851c370a119"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_tip.stl",
+      "path": "assets/robotis_hx5_d20/meshes/hx5_d20_rev2/hx5_d20_right/hx5_d20_thumb_tip.stl",
+      "sha256": "c94412c121cfdd6a98d0857010cd0d603415d832f05dbf369347f74f97b515d5"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/mujoco/hx5_d20_rev2/hx5_d20.xml",
+      "path": "assets/robotis_hx5_d20/mujoco/hx5_d20_rev2/hx5_d20.xml",
+      "sha256": "182a440b253b158f6f0015913bd1c21774b74ee225d5f5ccddce6419d88047b5"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/mujoco/hx5_d20_rev2/hx5_d20_left.xml",
+      "path": "assets/robotis_hx5_d20/mujoco/hx5_d20_rev2/hx5_d20_left.xml",
+      "sha256": "740dd652f7b27e40a60dca3cde2358a8b193a963c999c4b2502c6a25cbce5968"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/mujoco/hx5_d20_rev2/hx5_d20_right.xml",
+      "path": "assets/robotis_hx5_d20/mujoco/hx5_d20_rev2/hx5_d20_right.xml",
+      "sha256": "e6de4c63ff62d3e1ba2dac7b32bc0bb290714f051a3a17b347fe8df4660a2252"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/mujoco/hx5_d20_rev2/scene.xml",
+      "path": "assets/robotis_hx5_d20/mujoco/hx5_d20_rev2/scene.xml",
+      "sha256": "c6252544988de8bcd65bf13febb36fae4c1d3aebb152383f588ef4a26ce709ce"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/mujoco/hx5_d20_rev2/scene_left.xml",
+      "path": "assets/robotis_hx5_d20/mujoco/hx5_d20_rev2/scene_left.xml",
+      "sha256": "8f6031d2b468d5b901450a7aff91f1b11a57378047e2558e1a2f33b296836224"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/mujoco/hx5_d20_rev2/scene_right.xml",
+      "path": "assets/robotis_hx5_d20/mujoco/hx5_d20_rev2/scene_right.xml",
+      "sha256": "fbeb74bae135181ebca1c5fb1455564a1f410cf3b9484fd1aa9cf79b032b2b98"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/package.xml",
+      "path": "assets/robotis_hx5_d20/upstream_package.xml",
+      "sha256": "d3ebd42418813032f9aae7a1a2da5bad673a218007625b4efc913b044ff69b31"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/urdf/hx5_d20_rev2/hx5_d20_left.urdf.xacro",
+      "path": "assets/robotis_hx5_d20/urdf/hx5_d20_rev2/hx5_d20_left.urdf.xacro",
+      "sha256": "34792809a076146967a5ff055fad564342d4acac66af70ece5e29d6f8ae55f6e"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_hand/7730b76bbac51786b122023a7ab2afc17afc7d12/robotis_hand_description/urdf/hx5_d20_rev2/hx5_d20_right.urdf.xacro",
+      "path": "assets/robotis_hx5_d20/urdf/hx5_d20_rev2/hx5_d20_right.urdf.xacro",
+      "sha256": "aac2ff3f4d556b6b41af488fe2e21cfd80584ba271327596b92b82ae5a6f84b5"
+    }
+  ]
+}

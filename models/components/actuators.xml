@@ -1,0 +1,12 @@
+<mujoco>
+  <actuator>
+    <general name="shoulder_pan" joint="shoulder_pan_joint" gaintype="fixed" biastype="affine" gainprm="2000" biasprm="0 -2000 -100" ctrlrange="-6.283185307179586 6.283185307179586" forcerange="-150.0 150.0" />
+    <general name="shoulder_lift" joint="shoulder_lift_joint" gaintype="fixed" biastype="affine" gainprm="2000" biasprm="0 -2000 -100" ctrlrange="-6.283185307179586 6.283185307179586" forcerange="-150.0 150.0" />
+    <general name="elbow" joint="elbow_joint" gaintype="fixed" biastype="affine" gainprm="2000" biasprm="0 -2000 -100" ctrlrange="-3.141592653589793 3.141592653589793" forcerange="-150.0 150.0" />
+    <general name="wrist_1" joint="wrist_1_joint" gaintype="fixed" biastype="affine" gainprm="500" biasprm="0 -500 -30" ctrlrange="-6.283185307179586 6.283185307179586" forcerange="-28.0 28.0" />
+    <general name="wrist_2" joint="wrist_2_joint" gaintype="fixed" biastype="affine" gainprm="500" biasprm="0 -500 -30" ctrlrange="-6.283185307179586 6.283185307179586" forcerange="-28.0 28.0" />
+    <general name="wrist_3" joint="wrist_3_joint" gaintype="fixed" biastype="affine" gainprm="500" biasprm="0 -500 -30" ctrlrange="-6.283185307179586 6.283185307179586" forcerange="-28.0 28.0" />
+    <general name="wsg_left" joint="wsg_left_slide" gaintype="fixed" biastype="affine" gainprm="1000" biasprm="0 -1000 -15" ctrlrange="0 0.055" forcerange="-40 40" />
+    <general name="wsg_right" joint="wsg_right_slide" gaintype="fixed" biastype="affine" gainprm="1000" biasprm="0 -1000 -15" ctrlrange="0 0.055" forcerange="-40 40" />
+  </actuator>
+</mujoco>
