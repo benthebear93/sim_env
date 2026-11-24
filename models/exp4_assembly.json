@@ -1,0 +1,99 @@
+{
+  "config": {
+    "name": "Experimental Setup 4",
+    "description": "Exp 3 with only the right UR10e and HX5-D20 right hand; both joined tables are retained and the base is at hole index (2.5, 2.5) from the front-right corner.",
+    "units": "m, rad, kg, s; fields suffixed deg are degrees",
+    "table_template": "configs/bench.json",
+    "tables": {
+      "left_origin_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "right_origin_m": [
+        1.2,
+        0.0,
+        0.0
+      ],
+      "note": "Each table is 1.2 by 0.8 m, touching at x=1.2. Front/lower edge is y=-0.8; +x is right and +y is back."
+    },
+    "robots": {
+      "right": {
+        "base_position_m": [
+          2.3,
+          -0.7,
+          0.041
+        ],
+        "base_position_note": "Count holes from the right table's front-right corner toward -x and +y, starting at 1. Index (2.5, 2.5) lies halfway between holes 2 and 3 on each axis: 0.100 m inward from both edges.",
+        "mount_yaw_deg": 90.0,
+        "hand": "right",
+        "flange_target_position_m": [
+          1.45,
+          -0.2,
+          0.64
+        ],
+        "flange_target_rpy_deg": [
+          180.0,
+          0.0,
+          -90.0
+        ],
+        "ik_seed_deg": [
+          25.0,
+          -100.0,
+          105.0,
+          -95.0,
+          -90.0,
+          0.0
+        ]
+      }
+    },
+    "mount": {
+      "spacer_radius_m": 0.1,
+      "adapter_radius_m": 0.045,
+      "adapter_thickness_m": 0.02,
+      "adapter_density_kg_m3": 2700.0,
+      "tool0_wrist3_y_m": 0.11655,
+      "note": "Approximate cylindrical mounts inherited from Exp 3. The assembly uses wrist3 y=0.11655 m for the nominal UR10e flange. No hardware-specific mount CAD or extrinsic calibration is available for Exp 4."
+    },
+    "hand_mount_rpy_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "timestep_s": 0.002,
+    "camera": {
+      "lookat": [
+        1.2,
+        -0.32,
+        0.3
+      ],
+      "distance": 2.85,
+      "azimuth": 90.0,
+      "elevation": -38.0
+    }
+  },
+  "ready_arm_q_rad": {
+    "right": [
+      -0.7090956477672238,
+      -1.0968281913935356,
+      1.1158756298969161,
+      -1.5898437652982773,
+      -1.5707963267948963,
+      -3.8506883013570175
+    ]
+  },
+  "ready_arm_q_deg": {
+    "right": [
+      -40.628187888157136,
+      -62.843626217816876,
+      63.93496405459556,
+      -91.09133783677869,
+      -89.99999999999999,
+      -220.62818788815716
+    ]
+  },
+  "nq": 26,
+  "nu": 26,
+  "total_through_holes": 768,
+  "installation_status": "Nominal layout; no measured Exp 4 base calibration applied"
+}

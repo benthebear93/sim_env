@@ -11,6 +11,7 @@ dependencies = ["mujoco>=3.1.5,<4", "numpy>=1.24", "scipy>=1.10", "trimesh>=4", 
 
 [project.optional-dependencies]
 exp3 = ["mujoco>=3.13,<4"]
+exp4 = ["mujoco>=3.13,<4"]
 test = ["pytest>=7"]
 
 [tool.setuptools]

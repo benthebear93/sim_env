@@ -1,0 +1,19 @@
+<mujoco model="exp4_right_ur10e_hx5_d20">
+  <compiler angle="radian" autolimits="true" fusestatic="false" />
+  <option timestep="0.002" integrator="implicitfast" cone="elliptic" impratio="10" gravity="0 0 -9.81" />
+  <statistic center="1.2 -0.4 0.35" extent="2.8" />
+  <visual>
+    <global offwidth="1800" offheight="1200" />
+    <headlight ambient="0.4 0.4 0.4" diffuse="0.65 0.65 0.65" specular="0.15 0.15 0.15" />
+    <quality shadowsize="4096" />
+  </visual>
+  <include file="exp4_components/defaults.xml" />
+  <include file="exp4_components/assets.xml" />
+  <include file="exp4_components/tables.xml" />
+  <include file="exp4_components/robots.xml" />
+  <include file="exp4_components/actuators.xml" />
+  <include file="exp4_components/contacts.xml" />
+  <keyframe>
+    <key name="ready" qpos="-0.709095647767 -1.09682819139 1.1158756299 -1.5898437653 -1.57079632679 -3.85068830136 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" ctrl="-0.709095647767 -1.09682819139 1.1158756299 -1.5898437653 -1.57079632679 -3.85068830136 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" />
+  </keyframe>
+</mujoco>

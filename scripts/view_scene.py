@@ -13,7 +13,7 @@ sys.path.insert(0, str(ROOT))
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--setup", type=int, choices=[1, 2, 3], default=1,
+    parser.add_argument("--setup", type=int, choices=[1, 2, 3, 4], default=1,
                         help="Experimental setup to load (default: 1)")
     parser.add_argument("--render", type=Path, help="Save a PNG and exit")
     parser.add_argument("--view", choices=["overview", "tool", "top"], default="overview")
@@ -32,17 +32,17 @@ def main():
     try:
         model, data = load_scene(scene_path)
     except ValueError as error:
-        if args.setup == 3 and "Schema violation" in str(error):
+        if args.setup in (3, 4) and "Schema violation" in str(error):
             raise SystemExit(
-                "Setup 3 includes upstream HX5-D20 actuators requiring newer MuJoCo. "
-                "Use the MuJoCo 3.13+ environment described in docs/setup_3.md.\n"
+                f"Setup {args.setup} includes upstream HX5-D20 actuators requiring newer MuJoCo. "
+                f"Use the MuJoCo 3.13+ environment described in docs/setup_{args.setup}.md.\n"
                 + str(error)
             ) from error
         raise
     camera = mujoco.MjvCamera()
     mujoco.mjv_defaultCamera(camera)
-    if args.setup == 3:
-        scene_config = json.loads((ROOT / "configs/exp3.json").read_text())
+    if args.setup in (3, 4):
+        scene_config = json.loads((ROOT / f"configs/exp{args.setup}.json").read_text())
         camera_config = scene_config["camera"]
         camera.lookat[:] = camera_config["lookat"]
         camera.distance = camera_config["distance"]
@@ -52,8 +52,9 @@ def main():
             camera.lookat[:] = [1.2, -0.4, 0]
             camera.distance, camera.azimuth, camera.elevation = 3.3, 90, -89.9
         elif args.view == "tool":
-            camera.lookat[:] = 0.5 * (data.site("left_flange").xpos + data.site("right_flange").xpos)
-            camera.distance, camera.azimuth, camera.elevation = 1.25, 90, -20
+            camera.lookat[:] = sum(data.site(f"{side}_flange").xpos for side in scene_config["robots"]) / len(scene_config["robots"])
+            camera.distance = 1.25 if len(scene_config["robots"]) == 2 else 0.65
+            camera.azimuth, camera.elevation = 90, -20
     elif args.view == "tool":
         camera.lookat[:] = data.site("tcp" if args.setup == 2 else "flange").xpos
         camera.distance, camera.azimuth, camera.elevation = 0.55, 140, -18

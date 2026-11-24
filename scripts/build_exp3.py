@@ -45,12 +45,12 @@ def prefix_identifiers(element, prefix):
                 node.set(attr, prefix + node.get(attr))
 
 
-def include_fragment(root, name, elements):
+def include_fragment(root, name, elements, setup):
     fragment = ET.Element("mujoco")
     for element in elements:
         fragment.append(element)
-    save_xml(fragment, ROOT / "models/exp3_components" / f"{name}.xml")
-    ET.SubElement(root, "include", file=f"exp3_components/{name}.xml")
+    save_xml(fragment, ROOT / f"models/exp{setup}_components" / f"{name}.xml")
+    ET.SubElement(root, "include", file=f"exp{setup}_components/{name}.xml")
 
 
 def add_tables(world, assets, config):
@@ -59,7 +59,7 @@ def add_tables(world, assets, config):
     requested = json.loads((ROOT / config["table_template"]).read_text())["table"]
     generated = json.loads((ROOT / "models/assembly.json").read_text())["config"]["table"]
     if requested != generated:
-        raise ValueError("The table template changed; run scripts/build_scene.py before building Setup 3.")
+        raise ValueError("The table template changed; run scripts/build_scene.py before building this scene.")
     source_assets = ET.parse(ROOT / "models/components/assets.xml").getroot()
     for mesh in source_assets.findall("asset/mesh"):
         if mesh.get("name", "").startswith("table_"):
@@ -88,8 +88,8 @@ def add_tables(world, assets, config):
 def add_arm(world, assets, defaults, actuators, contacts, config, side):
     source_path = ROOT / "assets/ur10e/source/ur10e.xml"
     source = ET.parse(source_path).getroot()
-    # One shared, namespaced asset/default set supports both arm instances.
-    if side == "left":
+    # Load shared arm assets/defaults once, including in a right-only scene.
+    if defaults.find("default[@class='ur10e_ur10e']") is None:
         default = copy.deepcopy(source.find("default"))
         prefix_identifiers(default, "ur10e_")
         defaults.extend(default)
@@ -109,7 +109,7 @@ def add_arm(world, assets, defaults, actuators, contacts, config, side):
                 node.set(attr, "ur10e_" + node.get(attr))
     placement = config["robots"][side]
     if placement["hand"] != side:
-        raise ValueError(f"Setup 3 requires the matching {side} HX5-D20 hand.")
+        raise ValueError(f"The {side} arm requires the matching {side} HX5-D20 hand.")
     wrapper = ET.SubElement(world, "body", name=f"{side}_mount",
                             pos=numbers(placement["base_position_m"]),
                             quat=quaternion([0, 0, placement["mount_yaw_deg"]]))
@@ -160,8 +160,7 @@ def solve_ready_pose(scene_path, config):
     model = mujoco.MjModel.from_xml_path(str(scene_path.resolve()))
     data = mujoco.MjData(model)
     solutions = {}
-    for side in ("left", "right"):
-        placement = config["robots"][side]
+    for side, placement in config["robots"].items():
         ids = [model.joint(f"{side}_{name}").id for name in JOINT_NAMES]
         addresses = model.jnt_qposadr[ids]
         target_pos = np.array(placement["flange_target_position_m"])
@@ -193,9 +192,10 @@ def solve_ready_pose(scene_path, config):
     return data.qpos.copy(), data.ctrl.copy(), solutions
 
 
-def build(config_path=None):
-    config = json.loads(Path(config_path or ROOT / "configs/exp3.json").read_text())
-    root = ET.Element("mujoco", model="exp3_dual_ur10e_hx5_d20")
+def build(config_path=None, *, setup=3):
+    config = json.loads(Path(config_path or ROOT / f"configs/exp{setup}.json").read_text())
+    layout = "dual" if len(config["robots"]) == 2 else "_".join(config["robots"])
+    root = ET.Element("mujoco", model=f"exp{setup}_{layout}_ur10e_hx5_d20")
     ET.SubElement(root, "compiler", angle="radian", autolimits="true", fusestatic="false")
     ET.SubElement(root, "option", timestep=str(config["timestep_s"]), integrator="implicitfast",
                   cone="elliptic", impratio="10", gravity="0 0 -9.81")
@@ -212,12 +212,12 @@ def build(config_path=None):
     actuators, contacts = ET.Element("actuator"), ET.Element("contact")
     ET.SubElement(table_world, "light", pos="1.2 -0.2 2.5", dir="0 0 -1", diffuse="0.7 0.7 0.7")
     add_tables(table_world, assets, config)
-    for side in ("left", "right"):
+    for side in config["robots"]:
         add_arm(robot_world, assets, defaults, actuators, contacts, config, side)
     for name, element in [("defaults", defaults), ("assets", assets), ("tables", table_world),
                            ("robots", robot_world), ("actuators", actuators), ("contacts", contacts)]:
-        include_fragment(root, name, [element])
-    output = ROOT / "models/exp3.xml"
+        include_fragment(root, name, [element], setup)
+    output = ROOT / f"models/exp{setup}.xml"
     save_xml(root, output)
     qpos, ctrl, solved = solve_ready_pose(output, config)
     keyframe = ET.SubElement(root, "keyframe")
@@ -226,8 +226,8 @@ def build(config_path=None):
     manifest = {"config": config, "ready_arm_q_rad": solved,
                 "ready_arm_q_deg": {side: np.rad2deg(q).tolist() for side,q in solved.items()},
                 "nq": len(qpos), "nu": len(ctrl), "total_through_holes": 768,
-                "installation_status": "Nominal layout; no measured Exp 3 base calibration applied"}
-    (ROOT / "models/exp3_assembly.json").write_text(json.dumps(manifest, indent=2) + "\n")
+                "installation_status": f"Nominal layout; no measured Exp {setup} base calibration applied"}
+    (ROOT / f"models/exp{setup}_assembly.json").write_text(json.dumps(manifest, indent=2) + "\n")
     print(f"Built {output}: {len(qpos)} DOF, 2 tables, 768 through-holes")
     print("Ready arm joints [deg]:", manifest["ready_arm_q_deg"])
 

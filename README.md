@@ -7,9 +7,11 @@ Reusable MuJoCo scenes and robot assets for manipulation experiments.
 | [Exp 1](docs/setup_1.md) | UR5e, flange adapter, and WSG-50 on a Siegmund welding table | <img src="docs/images/exp1.png" alt="Experimental Setup 1" width="480"> |
 | [Exp 2](docs/setup_2.md) | Exp 1 with custom WSG-50 fingers and dual GelSight Mini sensors with curved gels | <img src="docs/images/exp2_tool.png" alt="Experimental Setup 2: curved GelSight close-up" width="480"> |
 | [Exp 3](docs/setup_3.md) | Dual UR10e with left/right HX5-D20 hands on two joined Siegmund welding tables | <img src="docs/images/exp3.png" alt="Experimental Setup 3" width="480"> |
+| [Exp 4](docs/setup_4.md) | Exp 3 with only the right UR10e and HX5-D20 right hand; both tables retained | <img src="docs/images/exp4.png" alt="Experimental Setup 4" width="480"> |
 
 ```bash
 python3 scripts/view_scene.py
 python3 scripts/view_scene.py --setup 2
 python3 scripts/view_scene.py --setup 3  # MuJoCo 3.13+
+python3 scripts/view_scene.py --setup 4  # MuJoCo 3.13+
 ```

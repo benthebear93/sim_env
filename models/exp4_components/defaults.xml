@@ -1,0 +1,49 @@
+<mujoco>
+  <default>
+    <geom friction="0.8 0.005 0.0001" />
+    <default class="ur10e_ur10e">
+      <material specular="0.5" shininess="0.25" />
+      <joint axis="0 1 0" range="-6.28319 6.28319" armature="0.1" />
+      <position ctrlrange="-6.2831 6.2831" />
+      <general biastype="affine" ctrlrange="-6.2831 6.2831" gainprm="5000" biasprm="0 -5000 -500" />
+      <default class="ur10e_size4">
+        <joint damping="10" />
+        <general forcerange="-330 330" />
+      </default>
+      <default class="ur10e_size3">
+        <joint damping="5" />
+        <general forcerange="-150 150" />
+        <default class="ur10e_size3_limited">
+          <joint range="-3.1415 3.1415" />
+          <general ctrlrange="-3.1415 3.1415" />
+        </default>
+      </default>
+      <default class="ur10e_size2">
+        <joint damping="2" />
+        <general forcerange="-56 56" />
+      </default>
+      <default class="ur10e_visual">
+        <geom type="mesh" contype="0" conaffinity="0" group="2" />
+      </default>
+      <default class="ur10e_collision">
+        <geom type="capsule" group="3" />
+        <default class="ur10e_eef_collision">
+          <geom type="cylinder" />
+        </default>
+      </default>
+      <site size="0.001" rgba="0.5 0.5 0.5 0.3" group="4" />
+    </default>
+    <default class="hx5_d20_right">
+      <joint damping="0.05" armature="0" frictionloss="0" actuatorfrcrange="-0.387 0.387" />
+      <default class="hx5_d20_right_visual">
+        <geom type="mesh" contype="0" conaffinity="0" density="0" group="2" rgba="0.2 0.2 0.2 1" />
+      </default>
+      <default class="hx5_d20_right_collision">
+        <geom type="mesh" group="3" density="0" rgba="0.45 0.65 0.85 0.35" />
+      </default>
+      <default class="hx5_d20_right/XM335-T323-T">
+        <position kp="4" dampratio="1" inheritrange="1" forcerange="-0.387 0.387" />
+      </default>
+    </default>
+  </default>
+</mujoco>
